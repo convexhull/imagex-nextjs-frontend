@@ -1,0 +1,86 @@
+.Login {
+  /* grid display for centering */
+  width: 40%;
+  margin: 0 auto;
+  min-width: 400px;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-content: center;
+}
+
+.container__logo {
+  width: auto;
+  height: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.container__logo img {
+  height: 100%;
+  width: auto;
+}
+
+.container__fbbtn {
+  margin-bottom: 30px;
+}
+
+.container__OR {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.container__loginbtn {
+  margin-bottom: 40px;
+}
+
+.container__loginbtn--disabled {
+  cursor: wait;
+}
+
+.log-in {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.wlcm-back {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.Login input[type="text"],
+.Login input[type="password"] {
+  width: 100%;
+  height: 45px;
+  font-size: 20px;
+  padding: 0px 10px;
+}
+
+.login-form__input {
+  margin-bottom: 25px;
+}
+
+.login-form__password {
+  display: flex;
+}
+
+.login-form__password p:last-child {
+  margin-left: auto;
+}
+
+.container__signuplink {
+  text-align: center;
+}
+
+/******************************MEDIA QUERIES***************************/
+
+@media (max-width: 538px) {
+  .Login {
+    width: 85%;
+    min-width: initial;
+  }
+}
