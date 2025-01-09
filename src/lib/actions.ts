@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 // Utils
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { loginFormSchema } from "./validation";
 // Types
 import { LoginFormState } from "./types";
@@ -34,4 +34,8 @@ export const loginUser = async (
   }
   redirect("/");
   // TODO: Toast/Notification for error/success etc.
+};
+
+export const logoutUser = async () => {
+  await signOut();
 };

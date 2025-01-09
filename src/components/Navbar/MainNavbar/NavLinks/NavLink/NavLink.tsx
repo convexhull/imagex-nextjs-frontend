@@ -12,7 +12,6 @@ type NavLinkProps = {
 
 const NavLink = ({ to, name }: NavLinkProps) => {
   const pathname = usePathname();
-  console.log({ pathname });
   return (
     <Link
       href={to}
