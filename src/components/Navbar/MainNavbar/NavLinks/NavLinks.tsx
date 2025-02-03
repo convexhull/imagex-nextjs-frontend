@@ -4,13 +4,14 @@ import NavLink from "./NavLink/NavLink";
 import { PLATFORMS } from "@/lib/constants";
 // Styles
 import classes from "./NavLinks.module.css";
+import { capitalize } from "@/utils/utils";
 
 const NavLinks = () => {
   return (
     <ul className={classes["navlink-container"]}>
       {PLATFORMS.map((platform) => (
         <li key={platform}>
-          <NavLink to={`/platform/${platform}`} name={platform.toUpperCase()} />
+          <NavLink to={`/platform/${platform}`} name={capitalize(platform)} />
         </li>
       ))}
       {/* <li
