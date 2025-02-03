@@ -1,0 +1,17 @@
+.container__loginbtn {
+  margin-bottom: 40px;
+}
+
+.login-form__input {
+  margin-bottom: 25px;
+}
+
+.login-form__password {
+  display: flex;
+}
+
+.login-form__password p:last-child {
+  margin-left: auto;
+}
+
+/******************************MEDIA QUERIES***************************/

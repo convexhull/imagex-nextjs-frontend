@@ -25,15 +25,6 @@
   width: auto;
 }
 
-.container__fbbtn {
-  margin-bottom: 30px;
-}
-
-.container__OR {
-  margin-bottom: 25px;
-  text-align: center;
-}
-
 .container__loginbtn {
   margin-bottom: 40px;
 }
@@ -58,18 +49,6 @@
   height: 45px;
   font-size: 20px;
   padding: 0px 10px;
-}
-
-.login-form__input {
-  margin-bottom: 25px;
-}
-
-.login-form__password {
-  display: flex;
-}
-
-.login-form__password p:last-child {
-  margin-left: auto;
 }
 
 .container__signuplink {
