@@ -6,11 +6,10 @@ import SearchBar from "./SearchBar/SearchBar";
 // import OptionsMenu from "./OptionsMenu/OptionsMenu";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 import NavLinks from "./NavLinks/NavLinks";
-import { auth } from "@/auth";
 
 const MainNavbar = async () => {
-  const session = await auth();
-
+  const session = true;
+  // TODO: session
   const profileInfo = !session ? (
     <ul className={classes["authenticate"]}>
       <li>

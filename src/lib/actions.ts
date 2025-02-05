@@ -3,7 +3,6 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 // Utils
-import { signIn, signOut } from "@/auth";
 import { loginFormSchema } from "./validation";
 // Types
 import { LoginFormState } from "./types";
@@ -18,7 +17,7 @@ export const loginUser = async (
   };
   try {
     await loginFormSchema.parseAsync(loginData);
-    await signIn("credentials", { ...loginData, redirect: false });
+    // await signIn("credentials", { ...loginData, redirect: false });
   } catch (e) {
     if (e instanceof z.ZodError) {
       const validationErrors = e.flatten().fieldErrors;
@@ -34,8 +33,4 @@ export const loginUser = async (
   }
   redirect("/");
   // TODO: Toast/Notification for error/success etc.
-};
-
-export const logoutUser = async () => {
-  await signOut();
 };

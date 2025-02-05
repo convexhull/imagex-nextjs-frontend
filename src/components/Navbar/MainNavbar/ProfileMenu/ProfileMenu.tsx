@@ -6,8 +6,6 @@ import Image from "next/image";
 import Backdrop from "@/components/UI/Backdrop/Backdrop";
 // Styles
 import classes from "./ProfileMenu.module.css";
-// Actions
-import { logoutUser } from "@/lib/actions";
 
 const ProfileMenu = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,7 +33,8 @@ const ProfileMenu = () => {
             <li className={classes["link"]}>
               <Link href="/account">Account Settings</Link>
             </li>
-            <li className={classes["link"]} onClick={logoutUser}>
+            <li className={classes["link"]} onClick={() => {}}>
+              {/* TODO: Implement logout */}
               <Link href="#">Logout</Link>
             </li>
           </ul>
