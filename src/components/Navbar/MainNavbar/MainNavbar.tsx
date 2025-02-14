@@ -1,14 +1,17 @@
 // Libs
 import Link from "next/link";
+import { cookies } from "next/headers";
 // Styles
 import classes from "./MainNavbar.module.css";
 import SearchBar from "./SearchBar/SearchBar";
 // import OptionsMenu from "./OptionsMenu/OptionsMenu";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 import NavLinks from "./NavLinks/NavLinks";
-
 const MainNavbar = async () => {
-  const session = true;
+  const cookie = await cookies();
+  const refreshToken = cookie.get("refreshToken");
+
+  const session = !!refreshToken;
   // TODO: session
   const profileInfo = !session ? (
     <ul className={classes["authenticate"]}>
