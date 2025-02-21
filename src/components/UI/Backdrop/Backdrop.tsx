@@ -1,9 +1,8 @@
-"use client";
 // Styles
 import classes from "./Backdrop.module.css";
 
 type BackdropProps = {
-  opacity: string;
+  opacity: "translucent" | "transparent";
   hideBackdrop: () => void;
 };
 
