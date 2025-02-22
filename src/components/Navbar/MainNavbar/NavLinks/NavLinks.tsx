@@ -14,12 +14,9 @@ const NavLinks = () => {
           <NavLink to={`/platform/${platform}`} name={capitalize(platform)} />
         </li>
       ))}
-      {/* <li
-        className={classes["main-navigation__random-image-btn"]}
-        onClick={() => {}}
-      >
-      Random Image
-      </li> */}
+      <li className={classes["main-navigation__random-image-btn"]}>
+        <NavLink to="/random-image" name="Random Image" />
+      </li>
     </ul>
   );
 };
