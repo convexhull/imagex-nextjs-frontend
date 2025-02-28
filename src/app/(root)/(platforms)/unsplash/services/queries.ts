@@ -3,7 +3,7 @@ import { getImages } from "./api";
 
 export function useFetchImages(keyword: string) {
   return useInfiniteQuery({
-    queryKey: ["images"],
+    queryKey: ["images", keyword],
     queryFn: ({ pageParam }) => getImages(pageParam, keyword),
     getNextPageParam: (lastPage, _, lastPageParam) => {
       if (lastPage.total_pages > lastPageParam) {
