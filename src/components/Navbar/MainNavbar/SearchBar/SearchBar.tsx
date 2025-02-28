@@ -5,11 +5,7 @@ import classes from "./SearchBar.module.css";
 
 const SearchBar = () => {
   return (
-    <Form
-      action="/platform/unsplash"
-      className={classes["Searchbar"]}
-      tabIndex={1}
-    >
+    <Form action="/unsplash" className={classes["Searchbar"]} tabIndex={1}>
       {/* <span className={classes["search-icon"]}>
         <ion-icon name="search-outline"></ion-icon>
       </span> */}

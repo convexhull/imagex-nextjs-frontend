@@ -11,7 +11,7 @@ const NavLinks = () => {
     <ul className={classes["navlink-container"]}>
       {PLATFORMS.map((platform) => (
         <li key={platform}>
-          <NavLink to={`/platform/${platform}`} name={capitalize(platform)} />
+          <NavLink to={`/${platform}`} name={capitalize(platform)} />
         </li>
       ))}
       <li className={classes["main-navigation__random-image-btn"]}>
