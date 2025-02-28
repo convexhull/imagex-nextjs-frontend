@@ -3,7 +3,7 @@
 // Utils
 import { imageOrientationByDimensions } from "@/utils/utils";
 // Types
-import { Image } from "@/app/(root)/platform/unsplash/types";
+import { Image } from "@/app/(root)/(platforms)/unsplash/types";
 // Styles
 import classes from "./ImageGrid.module.css";
 

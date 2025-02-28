@@ -4,10 +4,10 @@ import Spinner from "../UI/Spinner/Spinner";
 import EndOfResults from "../UI/EndOfResults/EndOfResults";
 import ImageGrid from "../ImageGrid/ImageGrid";
 // Hooks
-import { useFetchImages } from "@/app/(root)/platform/unsplash/services/queries";
+import { useFetchImages } from "@/app/(root)/(platforms)/unsplash/services/queries";
 import { useInView } from "react-intersection-observer";
 // Types
-import { Image } from "@/app/(root)/platform/unsplash/types";
+import { Image } from "@/app/(root)/(platforms)/unsplash/types";
 // Styles
 import classes from "./ImageScrollLoader.module.css";
 
