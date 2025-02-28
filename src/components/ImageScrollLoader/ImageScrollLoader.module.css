@@ -1,0 +1,17 @@
+.spinner {
+  margin: 0 auto;
+  width: 100%;
+  height: 360px;
+}
+
+.spinner--invisible {
+  display: none;
+}
+
+/*****************MEDIA QUERIES*********************/
+
+@media (max-width: 540px) {
+  .spinner {
+    height: 180px;
+  }
+}
