@@ -32,7 +32,7 @@ const Signup = () => {
             Already have an account? <Link href="/login">Login</Link>
           </h4>
           <p>OR</p>
-          <form>
+          <form onSubmit={() => setLoading(true)}>
             <div className={classes["name-container"]}>
               <div className={classes["name-container__first-name"]}>
                 <FormElement
