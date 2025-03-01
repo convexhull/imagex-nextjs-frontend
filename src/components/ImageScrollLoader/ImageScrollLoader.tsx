@@ -4,19 +4,20 @@ import Spinner from "../UI/Spinner/Spinner";
 import EndOfResults from "../UI/EndOfResults/EndOfResults";
 import ImageGrid from "../ImageGrid/ImageGrid";
 // Hooks
-import { useFetchImages } from "@/app/(root)/(platforms)/unsplash/services/queries";
+import { useFetchImages } from "@/services/queries";
 import { useInView } from "react-intersection-observer";
 // Types
-import { Image } from "@/app/(root)/(platforms)/unsplash/types";
+import { Image, Platform } from "@/lib/types";
 // Styles
 import classes from "./ImageScrollLoader.module.css";
 
 type ImageScrollLoaderProps = {
   keyword: string;
+  platform: Platform;
 };
 
-const ImageScrollLoader = ({ keyword }: ImageScrollLoaderProps) => {
-  const imagesQuery = useFetchImages(keyword);
+const ImageScrollLoader = ({ keyword, platform }: ImageScrollLoaderProps) => {
+  const imagesQuery = useFetchImages(platform, keyword);
   const { ref } = useInView({
     threshold: 0.1,
     onChange: (inView) => {
@@ -49,7 +50,7 @@ const ImageScrollLoader = ({ keyword }: ImageScrollLoaderProps) => {
   let images: Image[] = [];
   if (imagesQuery.data) {
     imagesQuery.data.pages.forEach((page) => {
-      images = images.concat(page.results);
+      images = images.concat(page.hits);
     });
   }
 

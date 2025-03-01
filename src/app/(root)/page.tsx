@@ -18,7 +18,7 @@ export default async function Home() {
         />
       </div>
       <div className={classes["trending-images"]}>
-        <ImageScrollLoader keyword="people" />
+        <ImageScrollLoader platform={Platform.UNSPLASH} keyword="people" />
       </div>
     </>
   );
