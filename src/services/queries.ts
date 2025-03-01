@@ -10,7 +10,6 @@ export function useFetchImages(platform: Platform, keyword: string) {
         ? getUnsplashImages(pageParam, keyword)
         : getPixabayImages(pageParam, keyword),
     getNextPageParam: (lastPage, _, lastPageParam) => {
-      debugger;
       if (lastPage.moreResults) {
         return lastPageParam + 1;
       }

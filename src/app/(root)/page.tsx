@@ -1,13 +1,16 @@
 // Components
 import ImageScrollLoader from "@/components/ImageScrollLoader/ImageScrollLoader";
 import HeroSection from "@/components/HeroSection/HeroSection";
+import CategoryNavbar from "@/components/Navbar/CategoryNavbar/CategoryNavbar";
+// Types
+import { Platform } from "@/lib/types";
 // Styles
 import classes from "./page.module.css";
-import { Platform } from "@/lib/types";
 
 export default async function Home() {
   return (
     <>
+      <CategoryNavbar hideLogo />
       <div className={classes["hero-container"]}>
         <HeroSection
           platform={Platform.UNSPLASH}
