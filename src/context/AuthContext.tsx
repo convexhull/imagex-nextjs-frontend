@@ -22,18 +22,21 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const [accessToken, setAccessToken] = useState<string>("");
   //TODO: Validations
   const login = async (email: string, password: string) => {
-    const res = await fetch("http://localhost:4000/users/login", {
-      cache: "no-store",
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-      headers: {
-        "content-type": "application/json",
-      },
-      credentials: "include",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/login`,
+      {
+        cache: "no-store",
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        headers: {
+          "content-type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
     if (!res.ok) {
       //TODO: Alert
     } else {
@@ -57,11 +60,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   const autoRefresh = async () => {
-    const res = await fetch("http://localhost:4000/users/refresh", {
-      cache: "no-store",
-      method: "POST",
-      credentials: "include",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/refresh`,
+      {
+        cache: "no-store",
+        method: "POST",
+        credentials: "include",
+      }
+    );
     if (!res.ok) {
     } else {
       const data = await res.json();
@@ -70,11 +76,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const logout = async () => {
-    const res = await fetch("http://localhost:4000/users/logout", {
-      cache: "no-store",
-      method: "POST",
-      credentials: "include",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/logout`,
+      {
+        cache: "no-store",
+        method: "POST",
+        credentials: "include",
+      }
+    );
     if (!res.ok) {
     } else {
       setAccessToken("");

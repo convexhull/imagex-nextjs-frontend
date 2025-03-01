@@ -2,7 +2,9 @@
 import ImageModal from "@/components/UI/ImageModal/ImageModal";
 
 const RandomImage = async () => {
-  const response = await fetch("http://localhost:4000/unsplash/randomPhoto");
+  const response = await fetch(
+    `${process.env.BACKEND_API_URL}/unsplash/randomPhoto`
+  );
   const { data: image } = await response.json();
   const imageUrl = image.urls.regular;
   const imageDescription = image.description || image.alt_description;

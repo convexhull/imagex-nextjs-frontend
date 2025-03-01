@@ -9,7 +9,7 @@ import {
 
 export const getUnsplashImages = async (pageParam = 1, keyword: string) => {
   const response = await fetch(
-    `http://localhost:4000/unsplash/searchPhotos?keywords=${keyword}&page=${pageParam}`,
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/unsplash/searchPhotos?keywords=${keyword}&page=${pageParam}`,
     {
       method: "POST",
     }
@@ -32,7 +32,7 @@ export const getUnsplashImages = async (pageParam = 1, keyword: string) => {
 
 export const getPixabayImages = async (pageParam = 1, keyword: string) => {
   const response = await fetch(
-    `http://localhost:4000/pixabay/searchPhotos?keywords=${keyword}&page=${pageParam}`
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pixabay/searchPhotos?keywords=${keyword}&page=${pageParam}`
   );
   if (!response.ok) {
     throw new Error("HTTP Error");
