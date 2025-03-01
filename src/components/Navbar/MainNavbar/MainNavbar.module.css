@@ -3,6 +3,10 @@
   align-items: center;
   height: 4rem;
   padding: 1rem;
+  position: fixed;
+  width: 100vw;
+  background-color: white;
+  z-index: 100;
 }
 
 .imagex-description {

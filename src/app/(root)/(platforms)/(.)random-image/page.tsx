@@ -1,7 +1,5 @@
 // Components
 import ImageModal from "@/components/UI/ImageModal/ImageModal";
-//TODO: Avoidable? cache: "no-store" and {next: {revalidate}} not workin
-export const dynamic = "force-dynamic";
 
 const RandomImage = async () => {
   const response = await fetch(
