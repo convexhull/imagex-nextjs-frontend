@@ -10,7 +10,7 @@ import classes from "./page.module.css";
 export default async function Home() {
   return (
     <>
-      <CategoryNavbar hideLogo />
+      <CategoryNavbar platform={Platform.UNSPLASH} hideLogo />
       <div className={classes["hero-container"]}>
         <HeroSection
           platform={Platform.UNSPLASH}

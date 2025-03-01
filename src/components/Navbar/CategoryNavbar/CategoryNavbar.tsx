@@ -7,7 +7,7 @@ import classes from "./CategoryNavbar.module.css";
 
 type CategoryNavbarProps = {
   hideLogo?: boolean;
-  platform?: Platform;
+  platform: Platform;
 };
 
 const CategoryNavbar = ({ platform, hideLogo }: CategoryNavbarProps) => {
