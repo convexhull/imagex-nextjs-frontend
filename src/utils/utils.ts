@@ -1,3 +1,10 @@
+// Types
+import {
+  Image,
+  PixabayImagesRespone,
+  UnsplashImagesResponse,
+} from "@/lib/types";
+
 export const capitalize: (str: string) => string = (str) => {
   return str.length > 0 ? str[0].toUpperCase() + str.slice(1) : str;
 };
@@ -42,4 +49,66 @@ export const imageOrientationByDimensions = (width: number, height: number) => {
     orientation = "portrait-3";
   }
   return orientation;
+};
+
+export const transformPixabayImageData = (
+  data: PixabayImagesRespone
+): Image[] => {
+  const images = data.hits;
+  const transformedImages = images.map((image) => {
+    return {
+      id: image.id,
+      width: image.imageWidth,
+      height: image.imageHeight,
+      description:
+        image.description || image.alt_description || image.tags || "",
+      alt_description:
+        image.alt_description || image.description || image.tags || "",
+      urls: {
+        raw: image.largeImageURL,
+        full: image.largeImageURL,
+        regular: image.largeImageURL,
+        small: image.largeImageURL,
+      },
+      links: {
+        download: image.largeImageURL,
+      },
+      user: {
+        username: image.user,
+        name: image.user,
+        profile_image: image.userImageURL,
+      },
+    };
+  });
+  return transformedImages;
+};
+
+export const transformUnsplashImageData = (
+  data: UnsplashImagesResponse
+): Image[] => {
+  const images = data.results;
+  const transformedImages = images.map((image) => {
+    return {
+      id: image.id,
+      width: image.width,
+      height: image.height,
+      description: image.description || "",
+      alt_description: image.alt_description || "",
+      urls: {
+        raw: image.urls.raw,
+        full: image.urls.full,
+        regular: image.urls.regular,
+        small: image.urls.small,
+      },
+      links: {
+        download: image.links.download,
+      },
+      user: {
+        username: image.user.username,
+        name: image.user.name,
+        profile_image: image.user.profile_image.large,
+      },
+    };
+  });
+  return transformedImages;
 };

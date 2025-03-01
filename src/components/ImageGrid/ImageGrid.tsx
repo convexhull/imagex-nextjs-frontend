@@ -3,13 +3,14 @@
 // Utils
 import { imageOrientationByDimensions } from "@/utils/utils";
 // Types
-import { Image } from "@/app/(root)/(platforms)/unsplash/types";
+import { Image } from "@/lib/types";
 // Styles
 import classes from "./ImageGrid.module.css";
 
 type ImageGridProps = {
   images: Image[];
 };
+
 const ImageGrid = ({ images }: ImageGridProps) => {
   // const [selectedImage, setSelectedImage] = useState<Image | null>(null);
   // const imageClickHandler = (image: Image) => {

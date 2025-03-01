@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 // Utils
-import { loginFormSchema } from "./validation";
+import { loginFormSchema } from "./schema";
 // Types
 import { LoginFormState } from "./types";
 
