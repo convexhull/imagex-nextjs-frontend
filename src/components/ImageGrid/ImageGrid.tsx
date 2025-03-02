@@ -4,15 +4,16 @@ import { Fragment } from "react";
 // Utils
 import { imageOrientationByDimensions } from "@/utils/utils";
 // Types
-import { Image } from "@/lib/types";
+import { Image, Platform } from "@/lib/types";
 // Styles
 import classes from "./ImageGrid.module.css";
 
 type ImageGridProps = {
   images: Image[];
+  platform: Platform;
 };
 
-const ImageGrid = ({ images }: ImageGridProps) => {
+const ImageGrid = ({ images, platform }: ImageGridProps) => {
   // const [selectedImage, setSelectedImage] = useState<Image | null>(null);
   // const imageClickHandler = (image: Image) => {
   //   setSelectedImage(image);
@@ -32,7 +33,7 @@ const ImageGrid = ({ images }: ImageGridProps) => {
     // }
     return (
       <Fragment key={image.id}>
-        <Link href={`/view-image/unsplash/${image.id}`}>🔗</Link>
+        <Link href={`/view-image/${platform}/${image.id}`}>🔗</Link>
         <div
           className={classes[imgOrientation] + " " + classes["image__box"]}
           // onMouseEnter={() => this.displayImageOverlay(image.id)}
