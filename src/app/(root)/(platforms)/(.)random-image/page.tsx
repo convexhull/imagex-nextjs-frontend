@@ -1,5 +1,6 @@
 // Components
 import ImageModal from "@/components/UI/ImageModal/ImageModal";
+import { Platform } from "@/lib/types";
 
 const RandomImage = async () => {
   const response = await fetch(
@@ -20,6 +21,8 @@ const RandomImage = async () => {
         uploaderProfileImageUrl={uploaderProfileImageUrl}
         uploaderName={uploaderName}
         uploaderUsername={uploaderUsername}
+        imageDownloadUrl={image.links.download}
+        platform={Platform.UNSPLASH}
       />
     </div>
   );

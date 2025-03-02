@@ -21,6 +21,8 @@ const ViewImage = async ({ params: pageParams }: ViewImageProps) => {
       uploaderProfileImageUrl={transformedImage.user.profile_image}
       uploaderName={transformedImage.user.name}
       uploaderUsername={transformedImage.user.username}
+      imageDownloadUrl={transformedImage.links.download}
+      platform={platform}
     />
   );
 };

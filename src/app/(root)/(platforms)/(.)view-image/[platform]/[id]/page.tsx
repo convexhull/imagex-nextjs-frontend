@@ -16,11 +16,13 @@ const ViewImage = async ({ params: pageParams }: ViewImageProps) => {
 
   return (
     <ImageModal
+      platform={platform}
       imageUrl={transformedImage.urls.regular}
       imageDescription={transformedImage.description}
       uploaderProfileImageUrl={transformedImage.user.profile_image}
       uploaderName={transformedImage.user.name}
       uploaderUsername={transformedImage.user.username}
+      imageDownloadUrl={transformedImage.links.download}
     />
   );
 };
