@@ -14,62 +14,25 @@ type ImageGridProps = {
 };
 
 const ImageGrid = ({ images, platform }: ImageGridProps) => {
-  // const [selectedImage, setSelectedImage] = useState<Image | null>(null);
-  // const imageClickHandler = (image: Image) => {
-  //   setSelectedImage(image);
-  // };
   const imagesToDisplay = images.map((image) => {
     const imgOrientation = imageOrientationByDimensions(
       image.width,
       image.height
     );
-    const imageOptionsClasses = [classes["image__options"]];
-    const likeBtnClasses = [classes["like-btn"]];
-    // if (image.id === this.state.hoveredOverImageId) {
-    //   imageOptionsClasses.push(classes["image__options--visible"]);
-    // }
-    // if (this.state.justLikedImageIds.includes(image.id)) {
-    //   likeBtnClasses.push(classes["like-btn--liked"]);
-    // }
+
     return (
       <Fragment key={image.id}>
-        <Link href={`/view-image/${platform}/${image.id}`}>🔗</Link>
         <div
           className={classes[imgOrientation] + " " + classes["image__box"]}
-          // onMouseEnter={() => this.displayImageOverlay(image.id)}
-          // onMouseLeave={this.removeImageOverlay}
           key={image.id}
         >
           <img
             src={image.urls.small}
             alt={image.description || image.alt_description || ""}
           />
-          <div
-            className={classes["image__overlay"]}
-            // onClick={() => imageClickHandler(image)}
-          ></div>
-          <div className={imageOptionsClasses.join(" ")}>
-            <div
-              className={likeBtnClasses.join(" ")}
-              // onClick={() => this.likeBtnHandler(image)}
-            >
-              <span>
-                <i className="fas fa-heart"></i>
-              </span>
-            </div>
-            <div className={classes["download-button"]}>
-              <a
-                title="Download photo"
-                href={`${image.links.download}?force=true`}
-                rel="nofollow noopener noreferrer"
-                target="_blank"
-              >
-                {/* <span className="_2Aga-">
-                  <i class="fa fa-download" aria-hidden="true"></i>
-                </span> */}
-              </a>
-            </div>
-          </div>
+          <Link href={`/view-image/${platform}/${image.id}`}>
+            <div className={classes["image__overlay"]}></div>
+          </Link>
         </div>
       </Fragment>
     );
