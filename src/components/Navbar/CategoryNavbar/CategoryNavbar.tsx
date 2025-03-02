@@ -163,7 +163,7 @@ const CategoryNavbar = ({ platform, hideLogo }: CategoryNavbarProps) => {
         <li className={classes["navlink-container__link"]}>
           <Link
             href={{
-              pathname: `/photos/${platform}`,
+              pathname: `/${platform}/photos`,
               search: `?keyword=athletics`,
             }}
           >
