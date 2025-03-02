@@ -1,5 +1,6 @@
 // Components
-// import ImageModal from "../../Common/UI/ImageModal/ImageModal";
+import Link from "next/link";
+import { Fragment } from "react";
 // Utils
 import { imageOrientationByDimensions } from "@/utils/utils";
 // Types
@@ -30,43 +31,46 @@ const ImageGrid = ({ images }: ImageGridProps) => {
     //   likeBtnClasses.push(classes["like-btn--liked"]);
     // }
     return (
-      <div
-        className={classes[imgOrientation] + " " + classes["image__box"]}
-        // onMouseEnter={() => this.displayImageOverlay(image.id)}
-        // onMouseLeave={this.removeImageOverlay}
-        key={image.id}
-      >
-        <img
-          src={image.urls.small}
-          alt={image.description || image.alt_description || ""}
-        />
+      <Fragment key={image.id}>
+        <Link href={`/view-image/unsplash/${image.id}`}>🔗</Link>
         <div
-          className={classes["image__overlay"]}
-          // onClick={() => imageClickHandler(image)}
-        ></div>
-        <div className={imageOptionsClasses.join(" ")}>
+          className={classes[imgOrientation] + " " + classes["image__box"]}
+          // onMouseEnter={() => this.displayImageOverlay(image.id)}
+          // onMouseLeave={this.removeImageOverlay}
+          key={image.id}
+        >
+          <img
+            src={image.urls.small}
+            alt={image.description || image.alt_description || ""}
+          />
           <div
-            className={likeBtnClasses.join(" ")}
-            // onClick={() => this.likeBtnHandler(image)}
-          >
-            <span>
-              <i className="fas fa-heart"></i>
-            </span>
-          </div>
-          <div className={classes["download-button"]}>
-            <a
-              title="Download photo"
-              href={`${image.links.download}?force=true`}
-              rel="nofollow noopener noreferrer"
-              target="_blank"
+            className={classes["image__overlay"]}
+            // onClick={() => imageClickHandler(image)}
+          ></div>
+          <div className={imageOptionsClasses.join(" ")}>
+            <div
+              className={likeBtnClasses.join(" ")}
+              // onClick={() => this.likeBtnHandler(image)}
             >
-              {/* <span className="_2Aga-">
-                <i class="fa fa-download" aria-hidden="true"></i>
-              </span> */}
-            </a>
+              <span>
+                <i className="fas fa-heart"></i>
+              </span>
+            </div>
+            <div className={classes["download-button"]}>
+              <a
+                title="Download photo"
+                href={`${image.links.download}?force=true`}
+                rel="nofollow noopener noreferrer"
+                target="_blank"
+              >
+                {/* <span className="_2Aga-">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                </span> */}
+              </a>
+            </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     );
   });
   return <div className={classes["image-grid"]}>{imagesToDisplay}</div>;
