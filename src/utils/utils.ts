@@ -1,4 +1,4 @@
-import { PixabayImage, UnsplashImage } from "@/lib/types";
+import { ComputerVisionImage, PixabayImage, UnsplashImage } from "@/lib/types";
 
 export const capitalize: (str: string) => string = (str) => {
   return str.length > 0 ? str[0].toUpperCase() + str.slice(1) : str;
@@ -91,6 +91,29 @@ export const transformUnsplashImageData = (image: UnsplashImage) => {
       username: image.user.username,
       name: image.user.name,
       profile_image: image.user.profile_image.large,
+    },
+  };
+};
+
+export const transformComputerVisionImageData = (
+  image: ComputerVisionImage
+) => {
+  return {
+    id: image.id,
+    width: image.assets.preview.width,
+    height: image.assets.preview.height,
+    description: image.description,
+    urls: {
+      regular: image.assets.preview.url,
+      small: image.assets.preview.url,
+    },
+    links: {
+      download: image.assets.preview.url,
+    },
+    user: {
+      username: "",
+      name: "",
+      profile_image: "",
     },
   };
 };

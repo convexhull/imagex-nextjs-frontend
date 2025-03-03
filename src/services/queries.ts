@@ -1,5 +1,6 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import {
+  getCVSimilarImages,
   getPixabayImage,
   getPixabayImages,
   getUnsplashImage,
@@ -7,13 +8,20 @@ import {
 } from "./api";
 import { Platform } from "@/lib/types";
 
+//TODO: keyword deservers a better name as even computer vison uses it for uplaod_id
 export function useFetchImages(platform: Platform, keyword: string) {
   return useInfiniteQuery({
     queryKey: ["images", platform, keyword],
-    queryFn: ({ pageParam }) =>
-      platform === Platform.UNSPLASH
-        ? getUnsplashImages(pageParam, keyword)
-        : getPixabayImages(pageParam, keyword),
+    queryFn: ({ pageParam }) => {
+      switch (platform) {
+        case Platform.UNSPLASH:
+          return getUnsplashImages(pageParam, keyword);
+        case Platform.PIXABAY:
+          return getPixabayImages(pageParam, keyword);
+        case Platform.COMPUTER_VISION:
+          return getCVSimilarImages(pageParam, keyword);
+      }
+    },
     getNextPageParam: (lastPage, _, lastPageParam) => {
       if (lastPage.moreResults) {
         return lastPageParam + 1;
