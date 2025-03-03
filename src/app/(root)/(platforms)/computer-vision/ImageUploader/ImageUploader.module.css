@@ -1,0 +1,25 @@
+.form {
+  text-align: center;
+}
+
+.form__btn {
+  height: 50px;
+  padding: 0 20px;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  transition: background-color 0.2s ease;
+}
+
+.form__btn:hover {
+  background-color: #000000;
+  color: white;
+}
+
+.form__file {
+  display: none;
+}

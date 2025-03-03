@@ -19,3 +19,5 @@ const RandomImage = async () => {
 export default RandomImage;
 
 // TODO: TS API RESPONSE VALIDATION?
+
+//TODO: LOOKS SUPER UGLY ATLEAST JUST MAKE IT THE GOOD OLD MODAL VIEW

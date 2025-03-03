@@ -19,7 +19,16 @@ const ImageGrid = ({ images, platform }: ImageGridProps) => {
       image.width,
       image.height
     );
-
+    const imageOverlay =
+      platform === Platform.COMPUTER_VISION ? (
+        <a target="_blank" href={image.links.download}>
+          <div className={classes["image__overlay"]}></div>
+        </a>
+      ) : (
+        <Link href={`/view-image/${platform}/${image.id}`}>
+          <div className={classes["image__overlay"]}></div>
+        </Link>
+      );
     return (
       <Fragment key={image.id}>
         <div
@@ -30,9 +39,7 @@ const ImageGrid = ({ images, platform }: ImageGridProps) => {
             src={image.urls.small}
             alt={image.description || image.alt_description || ""}
           />
-          <Link href={`/view-image/${platform}/${image.id}`}>
-            <div className={classes["image__overlay"]}></div>
-          </Link>
+          {imageOverlay}
         </div>
       </Fragment>
     );
