@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 // Styles
 import classes from "./Login.module.css";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./LoginForm/LoginForm";
 
 const Login = () => {
   return (
