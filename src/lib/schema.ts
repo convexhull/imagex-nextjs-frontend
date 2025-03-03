@@ -1,12 +1,24 @@
 // Libs
 import { z } from "zod";
 
-export const loginFormSchema = z
-  .object({
-    email: z.string().email(),
-    password: z.string().min(8).max(100),
-  })
-  .required();
+export const loginFormSchema = z.object({
+  email: z.string().email(),
+  password: z
+    .string()
+    .nonempty({ message: "This field can't be empty" })
+    .max(100),
+});
+
+export const signupFormSchema = z.object({
+  firstName: z.string().nonempty({ message: "First name should not be empty" }),
+  lastName: z.string().nonempty("Last name should not be empty"),
+  userName: z.string().min(3, { message: "Must contain atleast 3 characters" }),
+  password: z
+    .string()
+    .min(8, { message: "Should contain minimum 8 characters" })
+    .max(100),
+  email: z.string().email(),
+});
 
 export const pixabayImageSchema = z.object({
   id: z.coerce.string(),
