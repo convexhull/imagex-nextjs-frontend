@@ -14,7 +14,10 @@ const NavLinks = () => {
           <NavLink to={`/${platform}`} name={capitalize(platform)} />
         </li>
       ))}
-      <li className={classes["main-navigation__random-image-btn"]}>
+      <li className={classes["main-navigation__link"]}>
+        <NavLink to="/computer-vision" name="Similar Image" />
+      </li>
+      <li className={classes["main-navigation__link"]}>
         <NavLink to="/random-image" name="Random Image" />
       </li>
     </ul>

@@ -67,7 +67,7 @@
   margin-right: 10px;
 }
 
-.main-navigation__random-image-btn {
+.main-navigation__link {
   cursor: pointer;
   margin-left: 20px;
   color: var(--font-grey);
@@ -75,7 +75,7 @@
   font-size: 0.9rem;
 }
 
-.main-navigation__random-image-btn:hover {
+.main-navigation__link:hover {
   color: black;
 }
 
