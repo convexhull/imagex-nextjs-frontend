@@ -7,7 +7,6 @@
 .image-container {
   height: 100%;
   flex-basis: 40%;
-  background-color: silver;
 }
 
 .image-container img {

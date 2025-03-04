@@ -1,9 +1,10 @@
 // Libs
 import Link from "next/link";
 import Image from "next/image";
+// Components
+import LoginForm from "./LoginForm/LoginForm";
 // Styles
 import classes from "./Login.module.css";
-import LoginForm from "./LoginForm/LoginForm";
 
 const Login = () => {
   return (

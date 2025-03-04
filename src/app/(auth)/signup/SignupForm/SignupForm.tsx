@@ -8,24 +8,23 @@ import Button from "@/components/UI/Button/BlockButton/Button";
 // Styles
 import classes from "./SignupForm.module.css";
 import { signupFormSchema } from "@/lib/schema";
-
-type FormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  userName: string;
-};
+// Types
+import type { SignupFormData } from "@/lib/types";
+// Services
+import { useSignupUser } from "@/services/auth/mutations";
 
 const SignupForm = () => {
+  const signupUserMutation = useSignupUser();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<SignupFormData>({
     resolver: zodResolver(signupFormSchema),
   });
-  const submitHandler = () => {};
+  const submitHandler = (data: SignupFormData) => {
+    signupUserMutation.mutate(data);
+  };
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
       <div className={classes["name-container"]}>
@@ -83,3 +82,5 @@ const SignupForm = () => {
 };
 
 export default SignupForm;
+
+//TODO: Route guards using middleware?
