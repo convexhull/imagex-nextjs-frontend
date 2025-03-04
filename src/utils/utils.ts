@@ -1,4 +1,9 @@
-import { ComputerVisionImage, PixabayImage, UnsplashImage } from "@/lib/types";
+import {
+  ComputerVisionImage,
+  PixabayImage,
+  Platform,
+  UnsplashImage,
+} from "@/lib/types";
 
 export const capitalize: (str: string) => string = (str) => {
   return str.length > 0 ? str[0].toUpperCase() + str.slice(1) : str;
@@ -116,4 +121,16 @@ export const transformComputerVisionImageData = (
       profile_image: "",
     },
   };
+};
+
+export const getActivePlatform = (pathname: string) => {
+  const platformSegment = pathname.split("/")[1];
+  switch (platformSegment) {
+    case Platform.UNSPLASH:
+      return Platform.UNSPLASH;
+    case Platform.PIXABAY:
+      return Platform.PIXABAY;
+    default:
+      return Platform.UNSPLASH;
+  }
 };
