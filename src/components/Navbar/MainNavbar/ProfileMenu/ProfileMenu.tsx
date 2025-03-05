@@ -34,7 +34,7 @@ const ProfileMenu = () => {
               <Link href="/profile/settings">Account Settings</Link>
             </li>
             <li className={classes["link"]}>
-              <Link href="/favourites">Favourites</Link>
+              <Link href="/favourite-images">My Favourites</Link>
             </li>
             <li className={classes["link"]} onClick={() => {}}>
               {/* TODO: Implement logout */}
