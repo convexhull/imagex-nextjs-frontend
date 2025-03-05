@@ -9,12 +9,7 @@ const UnsplashSearchResults = async ({
 }) => {
   const search = await searchParams;
   return (
-    <div>
-      <ImageScrollLoader
-        platform={Platform.UNSPLASH}
-        keyword={search.keyword}
-      />
-    </div>
+    <ImageScrollLoader platform={Platform.UNSPLASH} keyword={search.keyword} />
   );
 };
 

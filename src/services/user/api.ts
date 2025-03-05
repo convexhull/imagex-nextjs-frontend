@@ -16,7 +16,7 @@ export const getOwnUserInfo = async (token: string | undefined) => {
   const data = (await response.json()).data;
   const parsedData = userProfileInfoSchema.safeParse(data);
   if (parsedData.error) {
-    throw new Error("Data format error");
+    throw new Error(parsedData.error.message);
   }
   const { data: userInfo } = parsedData;
   return userInfo;
