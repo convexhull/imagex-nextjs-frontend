@@ -69,6 +69,20 @@ export const computerVisionImageSchema = z.object({
   }),
 });
 
+export const favouriteImageSchema = z.object({
+  _id: z.string(),
+  platform: z.string(),
+  imageId: z.string(),
+  pageUrl: z.string(),
+  smallImageUrl: z.string(),
+  mediumImageUrl: z.string(),
+  largeImageUrl: z.string(),
+  downloadUrl: z.string(),
+  width: z.number(),
+  height: z.number(),
+  createdAt: z.string(),
+});
+
 export const pixabayImagesResponseSchema = z.object({
   moreResults: z.boolean(),
   total: z.number().optional(),
@@ -85,6 +99,10 @@ export const unsplashImagesResponseSchema = z.object({
 export const computerVisionImagesResponseSchema = z.object({
   moreResults: z.boolean(),
   data: z.array(computerVisionImageSchema),
+});
+
+export const favouriteImagesResponseSchema = z.object({
+  data: z.array(favouriteImageSchema),
 });
 
 export const imageSchema = z.object({
@@ -107,4 +125,10 @@ export const imageSchema = z.object({
     name: z.string(),
     profile_image: z.string(),
   }),
+  platform: z
+    .object({
+      name: z.string(),
+      imageId: z.string(),
+    })
+    .optional(),
 });

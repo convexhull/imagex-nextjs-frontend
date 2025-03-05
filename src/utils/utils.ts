@@ -1,5 +1,7 @@
 import {
   ComputerVisionImage,
+  FavouriteImage,
+  Image,
   PixabayImage,
   Platform,
   UnsplashImage,
@@ -51,7 +53,7 @@ export const imageOrientationByDimensions = (width: number, height: number) => {
   return orientation;
 };
 
-export const transformPixabayImageData = (image: PixabayImage) => {
+export const transformPixabayImageData = (image: PixabayImage): Image => {
   return {
     id: image.id,
     width: image.imageWidth,
@@ -76,7 +78,7 @@ export const transformPixabayImageData = (image: PixabayImage) => {
   };
 };
 
-export const transformUnsplashImageData = (image: UnsplashImage) => {
+export const transformUnsplashImageData = (image: UnsplashImage): Image => {
   return {
     id: image.id,
     width: image.width,
@@ -102,7 +104,7 @@ export const transformUnsplashImageData = (image: UnsplashImage) => {
 
 export const transformComputerVisionImageData = (
   image: ComputerVisionImage
-) => {
+): Image => {
   return {
     id: image.id,
     width: image.assets.preview.width,
@@ -119,6 +121,30 @@ export const transformComputerVisionImageData = (
       username: "",
       name: "",
       profile_image: "",
+    },
+  };
+};
+
+export const transformFavouriteImageData = (image: FavouriteImage): Image => {
+  return {
+    id: image._id,
+    width: image.width,
+    height: image.height,
+    urls: {
+      regular: image.largeImageUrl,
+      small: image.smallImageUrl,
+    },
+    links: {
+      download: image.downloadUrl,
+    },
+    user: {
+      username: "",
+      name: "",
+      profile_image: "",
+    },
+    platform: {
+      name: image.platform,
+      imageId: image.imageId,
     },
   };
 };
