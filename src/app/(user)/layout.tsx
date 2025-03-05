@@ -2,8 +2,9 @@
 import MainNavbar from "@/components/Navbar/MainNavbar/MainNavbar";
 
 type LayoutProps = {
-  children: Readonly<{ children: React.ReactNode }>;
+  children: Readonly<React.ReactNode>;
 };
+
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
