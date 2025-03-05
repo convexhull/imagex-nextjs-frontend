@@ -11,7 +11,7 @@ export const userProfileInfoSchema = z.object({
   _id: z.string(),
 });
 
-export const userInfoUpdateSchema = z.object({
+export const userProfileInfoUpdateSchema = z.object({
   firstName: z.string().nonempty({ message: "First name cannot be empty" }),
   lastName: z.string().nonempty({ message: "Last name cannot be empty" }),
   email: z.string().nonempty({ message: "Username cannot be empty" }),

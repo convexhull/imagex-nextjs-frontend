@@ -1,4 +1,5 @@
 import { userProfileInfoSchema } from "@/lib/user/schema";
+import { UserProfileUpdateInfo } from "@/lib/user/types";
 
 export const getOwnUserInfo = async (token: string | undefined) => {
   const response = await fetch(
@@ -40,6 +41,26 @@ export const uploadProfilePicture = async (
   if (!response.ok) {
     throw new Error("HTTP Error!");
   }
-  const data = await response.json();
-  console.log(data);
+  return await response.json();
+};
+
+export const updateProfileInfo = async (
+  data: UserProfileUpdateInfo,
+  token: string | undefined
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/update`,
+    {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+  if (!response.ok) {
+    throw new Error("HTTP Error!");
+  }
+  return await response.json();
 };

@@ -8,5 +8,6 @@ export function useGetOwnUserInfo() {
   return useQuery({
     queryKey: ["user", "me"],
     queryFn: () => getOwnUserInfo(token),
+    enabled: !!token,
   });
 }

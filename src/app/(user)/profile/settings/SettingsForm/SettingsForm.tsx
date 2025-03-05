@@ -1,15 +1,21 @@
 "use client";
-import classes from "./SettingsForm.module.css";
-import Input from "@/components/UI/FormElements/Input/Input";
-// import Button from "../../components/UI/Buttons/BlockButton/Button";
-// import * as actions from "../../store/actions/index";
-// import Notification from "../../components/UI/Notification/Notification";
+// Libs
 import { useForm } from "react-hook-form";
-import Button from "@/components/UI/Button/BlockButton/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { userInfoUpdateSchema } from "@/lib/user/schema";
-import { UserProfileInfo } from "@/lib/user/types";
+// Components
+import Button from "@/components/UI/Button/BlockButton/Button";
+import Input from "@/components/UI/FormElements/Input/Input";
 import TextArea from "@/components/UI/FormElements/TextArea/TextArea";
+import ProfileImage from "../ProfileImage/ProfileImage";
+// import Notification from "../../components/UI/Notification/Notification";
+// Schema
+import { userProfileInfoUpdateSchema } from "@/lib/user/schema";
+// Types
+import { UserProfileInfo, UserProfileUpdateInfo } from "@/lib/user/types";
+// Services
+import { useUpdateProfileInfo } from "@/services/user/mutations";
+// Styles
+import classes from "./SettingsForm.module.css";
 
 type FormData = {
   firstName: string;
@@ -24,15 +30,13 @@ type SettingsFormProps = {
 };
 
 const SettingsForm = ({ userInfo }: SettingsFormProps) => {
-  const submitHandler = (data) => {
-    console.log("submitted!", data);
-  };
+  const userProfileInfoUpdateMutation = useUpdateProfileInfo();
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<FormData>({
-    resolver: zodResolver(userInfoUpdateSchema),
+    resolver: zodResolver(userProfileInfoUpdateSchema),
     defaultValues: {
       firstName: userInfo.firstName,
       lastName: userInfo.lastName,
@@ -41,40 +45,18 @@ const SettingsForm = ({ userInfo }: SettingsFormProps) => {
       bio: userInfo.bio,
     },
   });
-  const loading = false;
+
+  const submitHandler = (data: UserProfileUpdateInfo) => {
+    userProfileInfoUpdateMutation.mutate(data);
+  };
+
+  const { isPending } = userProfileInfoUpdateMutation;
+
   return (
     <form onSubmit={handleSubmit(submitHandler)} className={classes["Account"]}>
-      <h2 className={classes["Account__title"]}>Edit profile</h2>
+      <h2 className={classes["Account__title"]}>My Account</h2>
       <div className={classes["basic-info"]}>
-        <div className={classes["basic-info__profile-pic"]}>
-          <div className={classes["basic-info__profile-image-container"]}>
-            <img
-              src={
-                // (this.props.userProfileInfo &&
-                //   this.props.userProfileInfo.profilePicUrl) ||
-                "https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png"
-              }
-              alt="user's dp"
-            />
-          </div>
-          <input
-            // ref={this.inputRef}
-            style={{ display: "none" }}
-            type="file"
-            // onChange={this.imageUploadHandler}
-            accept="image/*"
-          />
-          <button
-            // className={profilePicUploadBtnClasses}
-            type="button"
-            // onClick={this.imageSelectHandler}
-            // disabled={this.props.profilePicUpdating}
-          >
-            {/* {this.props.profilePicUpdating
-              ? "Updating Picture..."
-              : "Change profile picture"} */}
-          </button>
-        </div>
+        <ProfileImage userInfo={userInfo} />
         <div className={classes["basic-info__account-info"]}>
           <div className={classes["basic-info__first-name"]}>
             <Input
@@ -121,13 +103,8 @@ const SettingsForm = ({ userInfo }: SettingsFormProps) => {
         </div>
       </div>
       <div className={classes["Account__submit-btn"]}>
-        <Button
-          type="submit"
-          theme="imagex-default"
-          //   clicked={this.updateBtnHandler}
-          //   disabled={this.props.profileUpdating}
-        >
-          {loading ? "..." : "Update account"}
+        <Button type="submit" theme="imagex-default" disabled={isPending}>
+          {isPending ? "..." : "Update account"}
         </Button>
       </div>
     </form>
