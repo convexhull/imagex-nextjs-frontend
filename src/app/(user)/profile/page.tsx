@@ -32,7 +32,12 @@ const UserProfile = async () => {
           <Link href="/profile/settings">Edit Profile</Link>
         </div>
       </div>
-      <ImageGrid images={favouriteImages} />
+      <div className={classes.favouriteImages}>
+        <h1 className={classes.favouriteImages__title}>
+          🖤&nbsp;&nbsp;My Favourites ({favouriteImages.length})
+        </h1>
+        <ImageGrid images={favouriteImages} />
+      </div>
     </>
   );
 };
