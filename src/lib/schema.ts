@@ -73,7 +73,6 @@ export const favouriteImageSchema = z.object({
   _id: z.string(),
   platform: z.string(),
   imageId: z.string(),
-  pageUrl: z.string(),
   smallImageUrl: z.string(),
   mediumImageUrl: z.string(),
   largeImageUrl: z.string(),
@@ -125,10 +124,10 @@ export const imageSchema = z.object({
     name: z.string(),
     profile_image: z.string(),
   }),
-  platform: z
-    .object({
-      name: z.string(),
-      imageId: z.string(),
-    })
-    .optional(),
+  platform: z.object({
+    name: z.string(),
+    imageId: z.string(),
+  }),
 });
+
+// Check for redundancy of id and platform.id

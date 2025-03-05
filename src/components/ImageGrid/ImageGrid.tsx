@@ -10,22 +10,23 @@ import classes from "./ImageGrid.module.css";
 
 type ImageGridProps = {
   images: Image[];
-  platform: Platform;
 };
 
-const ImageGrid = ({ images, platform }: ImageGridProps) => {
+const ImageGrid = ({ images }: ImageGridProps) => {
   const imagesToDisplay = images.map((image) => {
     const imgOrientation = imageOrientationByDimensions(
       image.width,
       image.height
     );
     const imageOverlay =
-      platform === Platform.COMPUTER_VISION ? (
+      image.platform.name === Platform.COMPUTER_VISION ? (
         <a target="_blank" href={image.links.download}>
           <div className={classes["image__overlay"]}></div>
         </a>
       ) : (
-        <Link href={`/view-image/${platform}/${image.id}`}>
+        <Link
+          href={`/view-image/${image.platform.name}/${image.platform.imageId}`}
+        >
           <div className={classes["image__overlay"]}></div>
         </Link>
       );

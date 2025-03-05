@@ -75,6 +75,10 @@ export const transformPixabayImageData = (image: PixabayImage): Image => {
       name: image.user,
       profile_image: image.userImageURL,
     },
+    platform: {
+      name: Platform.PIXABAY,
+      imageId: image.id,
+    },
   };
 };
 
@@ -99,6 +103,11 @@ export const transformUnsplashImageData = (image: UnsplashImage): Image => {
       name: image.user.name,
       profile_image: image.user.profile_image.large,
     },
+    // Setting platform might be delegated to backend
+    platform: {
+      name: Platform.UNSPLASH,
+      imageId: image.id,
+    },
   };
 };
 
@@ -121,6 +130,10 @@ export const transformComputerVisionImageData = (
       username: "",
       name: "",
       profile_image: "",
+    },
+    platform: {
+      name: Platform.COMPUTER_VISION,
+      imageId: image.id,
     },
   };
 };

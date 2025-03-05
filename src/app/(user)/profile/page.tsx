@@ -4,8 +4,6 @@ import Link from "next/link";
 import ImageGrid from "@/components/ImageGrid/ImageGrid";
 // Services
 import { getFavouriteImages, getOwnUserInfo } from "@/services/user/api.server";
-// Types
-import { Platform } from "@/lib/types";
 // Styles
 import classes from "./page.module.css";
 
@@ -34,8 +32,7 @@ const UserProfile = async () => {
           <Link href="/profile/settings">Edit Profile</Link>
         </div>
       </div>
-      {/* // TODO: Platform CHECK HERE*/}
-      <ImageGrid platform={Platform.UNSPLASH} images={favouriteImages} />
+      <ImageGrid images={favouriteImages} />
     </>
   );
 };

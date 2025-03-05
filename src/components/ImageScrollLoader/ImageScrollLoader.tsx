@@ -56,7 +56,7 @@ const ImageScrollLoader = ({ keyword, platform }: ImageScrollLoaderProps) => {
 
   return (
     <>
-      <ImageGrid platform={platform} images={images} />
+      <ImageGrid images={images} />
       <div ref={ref} className={spinnerClasses.join(" ")}>
         <Spinner />
       </div>
