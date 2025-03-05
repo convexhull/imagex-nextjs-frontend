@@ -2,59 +2,56 @@
 import { useRouter } from "next/navigation";
 // Components
 import Modal from "../Modal/Modal";
-// Styles
-import classes from "./ImageModal.module.css";
 // Utils
 import { capitalize } from "@/utils/utils";
 // Types
-import { Platform } from "@/lib/types";
+import { Image } from "@/lib/types";
+// Services
+import { useAddFavouriteImage } from "@/services/mutations";
+// Styles
+import classes from "./ImageModal.module.css";
 
 type ImageModalProps = {
-  imageUrl: string;
-  imageDescription: string;
-  uploaderProfileImageUrl: string;
-  uploaderName: string;
-  uploaderUsername: string;
-  platform: Platform;
-  imageDownloadUrl: string;
+  image: Image;
 };
 
-const ImageModal = ({
-  imageUrl,
-  imageDescription,
-  uploaderProfileImageUrl,
-  uploaderName,
-  uploaderUsername,
-  imageDownloadUrl,
-}: ImageModalProps) => {
-  const capitalizedImageDesc = capitalize(imageDescription || "");
+const ImageModal = ({ image }: ImageModalProps) => {
+  const capitalizedImageDesc = capitalize(image.description || "");
   const router = useRouter();
+  const addFavouriteImageMutation = useAddFavouriteImage();
+
+  const addFavouriteHandler = () => {
+    addFavouriteImageMutation.mutate(image);
+  };
+
   return (
     <Modal hideModal={() => router.back()}>
-      {!imageUrl && (
+      {!image.urls.regular && (
         <div className={classes.container}>
           <div className={classes["spinner"]}>{/* <Spinner /> */}</div>
         </div>
       )}
-      {imageUrl && (
+      {image.urls.regular && (
         <div className={classes.container}>
           <div className={classes["image-header"]}>
             <div className={classes["user-info"]}>
               <div>
-                <img src={uploaderProfileImageUrl} alt="uploader's" />
+                <img src={image.user.profile_image} alt="uploader's" />
               </div>
               <p>
-                <strong>{uploaderName}</strong>
+                <strong>{image.user.name}</strong>
               </p>
-              <p>@{uploaderUsername}</p>
+              <p>@{image.user.username}</p>
             </div>
           </div>
           <div className={classes["actions"]}>
-            <div onClick={() => {}}>❤️</div>
+            <div>
+              <button onClick={addFavouriteHandler}>❤️</button>
+            </div>
             <div className={classes["download-button"]}>
               <a
                 title="Download photo"
-                href={`${imageDownloadUrl}`}
+                href={`${image.links.download}`}
                 rel="noopener noreferrer"
                 target="_blank"
                 download="file.jpg"
@@ -65,7 +62,7 @@ const ImageModal = ({
           </div>
           <div className={classes["image-container"]}>
             <img
-              src={imageUrl}
+              src={image.urls.regular}
               alt={capitalizedImageDesc || "alternate definition"}
             />
             <div className={classes["image-footer"]}>
@@ -80,4 +77,4 @@ const ImageModal = ({
 
 export default ImageModal;
 
-//TODO: use client
+//TODO: use client?

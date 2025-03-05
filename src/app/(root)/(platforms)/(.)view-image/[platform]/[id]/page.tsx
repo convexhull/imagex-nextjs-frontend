@@ -14,17 +14,7 @@ const ViewImage = async ({ params: pageParams }: ViewImageProps) => {
       ? await getUnsplashImage(id)
       : await getPixabayImage(id);
 
-  return (
-    <ImageModal
-      platform={platform}
-      imageUrl={transformedImage.urls.regular}
-      imageDescription={transformedImage.description}
-      uploaderProfileImageUrl={transformedImage.user.profile_image}
-      uploaderName={transformedImage.user.name}
-      uploaderUsername={transformedImage.user.username}
-      imageDownloadUrl={transformedImage.links.download}
-    />
-  );
+  return <ImageModal image={transformedImage} />;
 };
 
 export default ViewImage;

@@ -5,6 +5,7 @@ import {
   pixabayImageSchema,
   computerVisionImagesResponseSchema,
 } from "@/lib/schema";
+import { FavouriteImage, Image } from "@/lib/types";
 import {
   transformComputerVisionImageData,
   transformPixabayImageData,
@@ -127,4 +128,36 @@ export const uploadCVImage = async (file: File) => {
     const { upload_id } = await response.json();
     return upload_id as string;
   }
+};
+
+export const addFavouriteImage = async (
+  image: Image,
+  token: string | undefined
+) => {
+  const favouriteImage: Partial<FavouriteImage> = {
+    width: image.width,
+    height: image.height,
+    downloadUrl: image.links.download,
+    imageId: image.id,
+    largeImageUrl: image.urls.raw || image.urls.full || image.urls.regular,
+    smallImageUrl: image.urls.regular || image.urls.small,
+    mediumImageUrl: image.urls.full || image.urls.regular,
+    platform: image.platform.name,
+  };
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/image-list/saveImage`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(favouriteImage),
+    }
+  );
+  if (!response.ok) {
+    throw new Error("HTTP Error!");
+  }
+  return await response.json();
 };
