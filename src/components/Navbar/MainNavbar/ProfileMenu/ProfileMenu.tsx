@@ -28,10 +28,13 @@ const ProfileMenu = () => {
           <Backdrop opacity="transparent" hideBackdrop={toggleVisibility} />
           <ul className={classes["responsive-topnav"]}>
             <li className={classes["link"]}>
-              <Link href="/profile/favourite-images">Favorites</Link>
+              <Link href="/profile">My Profile</Link>
             </li>
             <li className={classes["link"]}>
-              <Link href="/account">Account Settings</Link>
+              <Link href="/profile/settings">Account Settings</Link>
+            </li>
+            <li className={classes["link"]}>
+              <Link href="/favourites">Favourites</Link>
             </li>
             <li className={classes["link"]} onClick={() => {}}>
               {/* TODO: Implement logout */}
