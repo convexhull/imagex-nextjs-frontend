@@ -1,70 +1,8 @@
-.main-navigation {
-  display: flex;
-  align-items: center;
-  height: 4rem;
-  padding: 1rem;
-}
-
-.imagex-description {
-  flex-basis: 7.5%;
-  min-width: 5.5rem;
-  margin-left: 1rem;
-}
-
-.imagex-title {
-  font-weight: bold;
-  font-size: 0.75rem;
-}
-
-.imagex-subtitle {
-  font-weight: bold;
-  font-size: 0.5rem;
-}
-
 .navlink-container {
   display: flex;
   list-style: none;
   align-items: center;
   flex-shrink: 0;
-}
-
-.main-navigation .logo {
-  height: 100%;
-  width: auto;
-  text-align: right;
-}
-
-.main-navigation .logo img {
-  height: 80%;
-  width: auto;
-}
-
-.main-navigation .image-search {
-  flex-basis: 100%;
-  flex-shrink: 1;
-  border-radius: 10px;
-  margin-left: 1rem;
-}
-
-.navbar-links:visited,
-.navbar-links:link {
-  text-decoration: none;
-  margin-left: 1.5rem;
-  font-weight: bold;
-  color: var(--font-grey);
-  font-size: 0.9rem;
-}
-
-.main-navigation .navbar-links:hover {
-  color: black;
-}
-
-.main-navigation .active-link {
-  color: black;
-}
-
-.main-navigation .authenticate {
-  margin-right: 10px;
 }
 
 .main-navigation__link {
@@ -79,64 +17,10 @@
   color: black;
 }
 
-.authenticate {
-  flex-shrink: 0;
-  display: flex;
-  margin-left: 1rem;
-  list-style: none;
-}
-
-.authenticate__profile-menu {
-  border-radius: 50%;
-  overflow: hidden;
-  margin-top: 0.5rem;
-  margin-left: 0.75rem;
-  height: 40px;
-  width: 40px;
-  cursor: pointer;
-}
-
-.authenticate__profile-menu img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-.authenticate__my-list {
-  margin-top: 0.75rem;
-  padding-bottom: -2.5rem;
-  font-size: 32px;
-}
-
-.responsive-dropdown {
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background-color: black;
-  z-index: 1000;
-}
-
-.burger-btn {
-  display: none;
-  margin: 0 1rem;
-  cursor: pointer;
-}
-
 /**************************************MEDIA QUERIES**************************************/
 
 @media (max-width: 1000px) {
   .navlink-container {
-    display: none;
-  }
-
-  .burger-btn {
-    display: initial;
-  }
-}
-
-@media (max-width: 1130px) {
-  .imagex-description {
     display: none;
   }
 }

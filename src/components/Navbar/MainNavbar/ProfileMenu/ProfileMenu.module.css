@@ -1,38 +1,30 @@
 .responsive-topnav {
-  position: relative;
+  position: absolute;
+  top: 60;
+  right: 10;
   z-index: 1000;
-}
-
-.responsive-topnav:hover {
-  cursor: pointer;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
 }
 
 .link {
   color: white;
   list-style: none;
   padding: 15px;
-}
-
-.link a {
+  display: inline-block;
   text-decoration: none;
 }
 
-.link a:link,
-.link a:visited {
+.link:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.link a:visited,
+a:focus,
+a:link,
+a:active {
   color: white;
 }
-
-.link a:active,
-.link a:hover {
-  color: var(--font-grey);
-}
-
-.responsive-dropdown {
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background-color: black;
-  z-index: 1000;
-}
-
-/**************************************MEDIA QUERIES**************************************/
