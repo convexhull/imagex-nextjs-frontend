@@ -1,15 +1,12 @@
-"use client";
-import { useRouter } from "next/navigation";
 // Components
 import Modal from "../Modal/Modal";
 // Utils
 import { capitalize } from "@/utils/utils";
 // Types
 import { Image } from "@/lib/types";
-// Services
-import { useAddFavouriteImage } from "@/services/mutations";
 // Styles
 import classes from "./ImageModal.module.css";
+import AddFavourite from "@/components/AddFavourite/AddFavourite";
 
 type ImageModalProps = {
   image: Image;
@@ -17,15 +14,9 @@ type ImageModalProps = {
 
 const ImageModal = ({ image }: ImageModalProps) => {
   const capitalizedImageDesc = capitalize(image.description || "");
-  const router = useRouter();
-  const addFavouriteImageMutation = useAddFavouriteImage();
-
-  const addFavouriteHandler = () => {
-    addFavouriteImageMutation.mutate(image);
-  };
 
   return (
-    <Modal hideModal={() => router.back()}>
+    <Modal>
       {!image.urls.regular && (
         <div className={classes.container}>
           <div className={classes["spinner"]}>{/* <Spinner /> */}</div>
@@ -46,7 +37,7 @@ const ImageModal = ({ image }: ImageModalProps) => {
           </div>
           <div className={classes["actions"]}>
             <div>
-              <button onClick={addFavouriteHandler}>❤️</button>
+              <AddFavourite image={image} />
             </div>
             <div className={classes["download-button"]}>
               <a

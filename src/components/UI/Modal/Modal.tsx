@@ -1,17 +1,20 @@
+"use client";
+import { useRouter } from "next/navigation";
 // Components
 import Backdrop from "../Backdrop/Backdrop";
 // Styles
 import classes from "./Modal.module.css";
 
 type ModalProps = {
-  hideModal: () => void;
   children: React.ReactNode;
 };
 
-const Modal = ({ hideModal, children }: ModalProps) => {
+const Modal = ({ children }: ModalProps) => {
+  const router = useRouter();
+
   return (
     <>
-      <Backdrop opacity="translucent" hideBackdrop={hideModal} />
+      <Backdrop opacity="translucent" hideBackdrop={() => router.back()} />
       <div className={classes.Modal}>{children}</div>
     </>
   );
