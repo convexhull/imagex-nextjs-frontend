@@ -1,17 +1,23 @@
 "use client";
 // Libs
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+// Components
 import Backdrop from "@/components/UI/Backdrop/Backdrop";
+// Contexts
+import { AuthContext } from "@/context/AuthContext";
 // Styles
 import classes from "./ProfileMenu.module.css";
 
 const ProfileMenu = () => {
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
+  const logout = useContext(AuthContext)?.logout;
   return (
     <>
       <Image
@@ -24,24 +30,33 @@ const ProfileMenu = () => {
         onClick={() => setIsVisible(true)}
       />
       {isVisible && (
-        <div className={classes["responsive-dropdown"]}>
+        <>
           <Backdrop opacity="transparent" hideBackdrop={toggleVisibility} />
-          <ul className={classes["responsive-topnav"]}>
-            <li className={classes["link"]}>
-              <Link href="/profile">My Profile</Link>
-            </li>
-            <li className={classes["link"]}>
-              <Link href="/profile/settings">Account Settings</Link>
-            </li>
-            <li className={classes["link"]}>
-              <Link href="/favourite-images">My Favourites</Link>
-            </li>
-            <li className={classes["link"]} onClick={() => {}}>
+          <ul
+            className={classes["responsive-topnav"]}
+            onClick={toggleVisibility}
+          >
+            <Link className={classes["link"]} href="/profile">
+              <li>My Profile</li>
+            </Link>
+            <Link className={classes["link"]} href="/profile/settings">
+              <li>Account Settings</li>
+            </Link>
+            <Link className={classes.link} href="/favourite-images">
+              <li>My Favourites</li>
+            </Link>
+            <li
+              className={classes["link"]}
+              onClick={() => {
+                if (logout) logout();
+                router.push("/");
+              }}
+            >
               {/* TODO: Implement logout */}
-              <Link href="#">Logout</Link>
+              Logout
             </li>
           </ul>
-        </div>
+        </>
       )}
     </>
   );

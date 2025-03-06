@@ -59,7 +59,6 @@ const LoginForm = () => {
           </Button>
         </div>
       </form>
-      <button onClick={logout}>Logout</button>
     </div>
   );
 };
