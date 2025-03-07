@@ -161,3 +161,22 @@ export const addFavouriteImage = async (
   }
   return await response.json();
 };
+
+export const removeFavouriteImage = async (
+  id: string,
+  token: string | undefined
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/removeFavouriteImage?imageId=${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  if (!response.ok) {
+    throw new Error("HTTP Error!");
+  }
+  return (await response.json()).data;
+};

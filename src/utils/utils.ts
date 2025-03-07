@@ -162,6 +162,7 @@ export const transformFavouriteImageData = (image: FavouriteImage): Image => {
   };
 };
 
+//TODO: Better naming, its misleading for example use in <SearchBar />
 export const getActivePlatform = (pathname: string) => {
   const platformSegment = pathname.split("/")[1];
   switch (platformSegment) {
