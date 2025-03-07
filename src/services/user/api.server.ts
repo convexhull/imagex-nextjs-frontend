@@ -8,11 +8,11 @@ export const getOwnUserInfo = async () => {
   const token = cookie.get("accessToken")?.value;
   const response = await fetch(`${process.env.BACKEND_API_URL}/users/me`, {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Cookie: `accessToken=${token}`,
     },
   });
   if (!response.ok) {
-    throw new Error("HTTP Error");
+    throw new Error(`Response status: ${response.status}`);
   }
   const data = (await response.json()).data;
   const parsedData = userProfileInfoSchema.safeParse(data);
@@ -30,7 +30,7 @@ export const getFavouriteImages = async () => {
     `${process.env.BACKEND_API_URL}/users/favourite-images`,
     {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Cookie: `accessToken=${token}`,
       },
     }
   );

@@ -1,13 +1,11 @@
 import { userProfileInfoSchema } from "@/lib/user/schema";
 import { UserProfileUpdateInfo } from "@/lib/user/types";
 
-export const getOwnUserInfo = async (token: string | undefined) => {
+export const getOwnUserInfo = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/me`,
     {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      credentials: "include",
     }
   );
   if (!response.ok) {
@@ -22,10 +20,7 @@ export const getOwnUserInfo = async (token: string | undefined) => {
   return userInfo;
 };
 
-export const uploadProfilePicture = async (
-  file: File,
-  token: string | undefined
-) => {
+export const uploadProfilePicture = async (file: File) => {
   const formData = new FormData();
   formData.append("file", file);
   const response = await fetch(
@@ -33,9 +28,7 @@ export const uploadProfilePicture = async (
     {
       method: "POST",
       body: formData,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      credentials: "include",
     }
   );
   if (!response.ok) {
@@ -44,18 +37,15 @@ export const uploadProfilePicture = async (
   return await response.json();
 };
 
-export const updateProfileInfo = async (
-  data: UserProfileUpdateInfo,
-  token: string | undefined
-) => {
+export const updateProfileInfo = async (data: UserProfileUpdateInfo) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/update`,
     {
       method: "PATCH",
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(data),
     }
   );

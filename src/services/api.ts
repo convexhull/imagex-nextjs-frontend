@@ -130,10 +130,7 @@ export const uploadCVImage = async (file: File) => {
   }
 };
 
-export const addFavouriteImage = async (
-  image: Image,
-  token: string | undefined
-) => {
+export const addFavouriteImage = async (image: Image) => {
   const favouriteImage: Partial<FavouriteImage> = {
     width: image.width,
     height: image.height,
@@ -151,8 +148,8 @@ export const addFavouriteImage = async (
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
+      credentials: "include",
       body: JSON.stringify(favouriteImage),
     }
   );
@@ -162,17 +159,12 @@ export const addFavouriteImage = async (
   return await response.json();
 };
 
-export const removeFavouriteImage = async (
-  id: string,
-  token: string | undefined
-) => {
+export const removeFavouriteImage = async (id: string) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/removeFavouriteImage?imageId=${id}`,
     {
       method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
+      credentials: "include",
     }
   );
   if (!response.ok) {
