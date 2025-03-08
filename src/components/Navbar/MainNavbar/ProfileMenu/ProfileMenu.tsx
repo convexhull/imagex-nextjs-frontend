@@ -1,23 +1,22 @@
 "use client";
 // Libs
-import { useContext, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 // Components
 import Backdrop from "@/components/UI/Backdrop/Backdrop";
-// Contexts
-import { AuthContext } from "@/context/AuthContext";
+// Services
+import { useLogout } from "@/services/auth/mutations";
 // Styles
 import classes from "./ProfileMenu.module.css";
 
 const ProfileMenu = () => {
-  const router = useRouter();
+  const logoutMutation = useLogout();
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
-  const logout = useContext(AuthContext)?.logout;
+
   return (
     <>
       <Image
@@ -47,12 +46,8 @@ const ProfileMenu = () => {
             </Link>
             <li
               className={classes["link"]}
-              onClick={() => {
-                if (logout) logout();
-                router.push("/");
-              }}
+              onClick={() => logoutMutation.mutate()}
             >
-              {/* TODO: Implement logout */}
               Logout
             </li>
           </ul>

@@ -1,23 +1,20 @@
 "use client";
 // Libs
-import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 // Components
 import Button from "@/components/UI/Button/BlockButton/Button";
 import Input from "@/components/UI/FormElements/Input/Input";
-// Styles
-import classes from "./LoginForm.module.css";
-import { AuthContext } from "@/context/AuthContext";
+// Services
+import { useLogin } from "@/services/auth/mutations";
 // Schemas
 import { loginFormSchema } from "@/lib/schema";
 // Types
 import type { LoginFormData } from "@/lib/types";
+// Styles
+import classes from "./LoginForm.module.css";
 
 const LoginForm = () => {
-  const auth = useContext(AuthContext);
-  const login = auth?.login;
-  const logout = auth?.logout;
   const {
     register,
     handleSubmit,
@@ -25,9 +22,10 @@ const LoginForm = () => {
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginFormSchema),
   });
+  const loginMutation = useLogin();
 
   const submitHandler = (data: LoginFormData) => {
-    if (login) login(data.email, data.password);
+    loginMutation.mutate({ email: data.email, password: data.password });
   };
 
   return (

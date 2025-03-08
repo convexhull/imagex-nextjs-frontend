@@ -4,16 +4,12 @@ import { cookies } from "next/headers";
 // Styles
 import classes from "./MainNavbar.module.css";
 import SearchBar from "./SearchBar/SearchBar";
-// import OptionsMenu from "./OptionsMenu/OptionsMenu";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 import NavLinks from "./NavLinks/NavLinks";
 const MainNavbar = async () => {
-  const cookie = await cookies();
-  const refreshToken = cookie.get("refreshToken");
-
-  const session = !!refreshToken;
-  // TODO: session
-  const profileInfo = !session ? (
+  //TODO: Extract to layout.tsx and pass as props to each page.tsx? As we can only use cookies() api in server components and not in utils
+  const isAuthenticated = !!(await cookies()).get("accessToken");
+  const profileInfo = !isAuthenticated ? (
     <ul className={classes["authenticate"]}>
       <li>
         <Link href="/login" className={classes["navbar-links"]}>
@@ -51,17 +47,6 @@ const MainNavbar = async () => {
         <SearchBar />
       </div>
       <NavLinks />
-      {/* <div className={classes["burger-btn"]} onClick={this.toggleOptionsMenu}>
-        <i class="fas fa-align-justify"></i>
-      </div>
-      {this.state.showOptionsMenu ? (
-        <div className={classes["responsive-dropdown"]}>
-          <OptionsMenu
-            randomImageLoad={this.props.randomImageLoad}
-            toggleOptionsMenu={this.toggleOptionsMenu}
-          />
-        </div>
-      ) : null} */}
       {profileInfo}
     </div>
   );
