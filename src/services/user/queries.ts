@@ -5,10 +5,10 @@ import { AuthContext } from "@/context/AuthContext";
 
 //TODO: AUTH CHECK THIS TOKEN WITH NEW AUTH V2
 export function useGetOwnUserInfo() {
-  const token = useContext(AuthContext)?.accessToken;
+  const session = useContext(AuthContext)?.session;
   return useQuery({
     queryKey: ["user", "me"],
     queryFn: getOwnUserInfo,
-    enabled: !!token,
+    enabled: !!session,
   });
 }
