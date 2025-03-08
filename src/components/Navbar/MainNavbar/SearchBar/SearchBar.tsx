@@ -3,6 +3,8 @@
 import Form from "next/form";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+// Components
+import { Search, X } from "lucide-react";
 // Styles
 import classes from "./SearchBar.module.css";
 import { getActivePlatform } from "@/utils/utils";
@@ -23,7 +25,9 @@ const SearchBar = () => {
       className={classes["Searchbar"]}
       tabIndex={1}
     >
-      <span className={classes["search-icon"]}>🔍</span>
+      <span className={classes["search-icon"]}>
+        <Search />
+      </span>
       <input
         className={classes["searchbox"]}
         type="text"
@@ -32,7 +36,7 @@ const SearchBar = () => {
         onChange={(event) => setKeyword(event.target.value)}
       />
       <span className={crossIconClasses} onClick={() => setKeyword("")}>
-        X
+        <X />
       </span>
     </Form>
   );

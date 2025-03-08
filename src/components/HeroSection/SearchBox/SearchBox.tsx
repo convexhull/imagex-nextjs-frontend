@@ -2,6 +2,8 @@
 // Libs
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+// Components
+import { Search, X } from "lucide-react";
 // Styles
 import classes from "./SearchBox.module.css";
 import { Platform } from "@/lib/types";
@@ -22,7 +24,9 @@ const SearchBox = ({ platform }: SearchBoxProps) => {
   return (
     <form className={classes["mainsection__form"]} onSubmit={formSubmitHandler}>
       <div className={classes["Search"]}>
-        <div className={classes["search-symbol"]}>🔍</div>
+        <div className={classes["search-symbol"]}>
+          <Search />
+        </div>
         <input
           type="text"
           placeholder="Search free high-resolution photos"
@@ -31,7 +35,7 @@ const SearchBox = ({ platform }: SearchBoxProps) => {
         />
         {keyword ? (
           <div onClick={() => setKeyword("")} className={classes["cancel-btn"]}>
-            X
+            <X />
           </div>
         ) : null}
       </div>

@@ -1,12 +1,13 @@
 // Components
 import Modal from "../Modal/Modal";
+import { Download } from "lucide-react";
+import AddFavourite from "@/components/AddFavourite/AddFavourite";
 // Utils
 import { capitalize } from "@/utils/utils";
 // Types
 import { Image } from "@/lib/types";
 // Styles
 import classes from "./ImageModal.module.css";
-import AddFavourite from "@/components/AddFavourite/AddFavourite";
 
 type ImageModalProps = {
   image: Image;
@@ -17,11 +18,6 @@ const ImageModal = ({ image }: ImageModalProps) => {
 
   return (
     <Modal>
-      {!image.urls.regular && (
-        <div className={classes.container}>
-          <div className={classes["spinner"]}>{/* <Spinner /> */}</div>
-        </div>
-      )}
       {image.urls.regular && (
         <div className={classes.container}>
           <div className={classes["image-header"]}>
@@ -47,7 +43,9 @@ const ImageModal = ({ image }: ImageModalProps) => {
                 target="_blank"
                 download="file.jpg"
               >
-                <span className="_2Aga-">⬇️</span>
+                <span className="_2Aga-">
+                  <Download />
+                </span>
               </a>
             </div>
           </div>
@@ -67,5 +65,3 @@ const ImageModal = ({ image }: ImageModalProps) => {
 };
 
 export default ImageModal;
-
-//TODO: use client?
