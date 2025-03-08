@@ -22,9 +22,9 @@
   opacity: 0.6;
 }
 
-.link a:visited,
-a:focus,
-a:link,
-a:active {
+.link:visited,
+.link:focus,
+.link:active,
+.link:link {
   color: white;
 }

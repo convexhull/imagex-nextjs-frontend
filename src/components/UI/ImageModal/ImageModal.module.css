@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 100vh;
   overflow-y: hidden;
+  padding: 16px;
 }
 
 .image-container {
@@ -18,10 +19,10 @@
   height: calc(100vh - 200px);
 }
 
-.image-header {
+.imageDetails {
   display: flex;
-  height: 100px;
-  padding: 10px 20px 20px 20px;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .download-button {
@@ -66,7 +67,9 @@
   margin-left: 10px;
   cursor: pointer;
 }
-
+.likeBtn {
+  border-radius: 8px;
+}
 .icons:hover {
   color: #f15151;
 }
@@ -81,28 +84,20 @@
   margin-left: auto;
 }
 
-.download-button a:link,
-.download-button a:hover {
-  text-decoration: none;
-  color: black;
-}
-
 .download-button a:visited,
-.download-button a:active {
+.download-button a:active,
+.download-button a:hover,
+.download-button a:link {
   text-decoration: none;
   color: black;
-}
-
-.icons:hover {
-  color: #f15151;
 }
 
 .download-button {
   border: 1px solid #adacac;
-  height: 30px;
+  height: 40px;
   width: 100px;
   margin-left: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 
 .download-button:hover {

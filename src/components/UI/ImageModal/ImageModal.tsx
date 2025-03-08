@@ -20,7 +20,7 @@ const ImageModal = ({ image }: ImageModalProps) => {
     <Modal>
       {image.urls.regular && (
         <div className={classes.container}>
-          <div className={classes["image-header"]}>
+          <div className={classes.imageDetails}>
             <div className={classes["user-info"]}>
               <div>
                 <img src={image.user.profile_image} alt="uploader's" />
@@ -30,23 +30,21 @@ const ImageModal = ({ image }: ImageModalProps) => {
               </p>
               <p>@{image.user.username}</p>
             </div>
-          </div>
-          <div className={classes["actions"]}>
-            <div>
+            <div className={classes["actions"]}>
               <AddFavourite image={image} />
-            </div>
-            <div className={classes["download-button"]}>
-              <a
-                title="Download photo"
-                href={`${image.links.download}`}
-                rel="noopener noreferrer"
-                target="_blank"
-                download="file.jpg"
-              >
-                <span className="_2Aga-">
-                  <Download />
-                </span>
-              </a>
+              <div className={classes["download-button"]}>
+                <a
+                  title="Download photo"
+                  href={`${image.links.download}`}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  download="file.jpg"
+                >
+                  <span className="_2Aga-">
+                    <Download />
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
           <div className={classes["image-container"]}>

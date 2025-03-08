@@ -1,11 +1,14 @@
 // Libs
 import Link from "next/link";
 import { cookies } from "next/headers";
-// Styles
-import classes from "./MainNavbar.module.css";
+// components
 import SearchBar from "./SearchBar/SearchBar";
 import ProfileMenu from "./ProfileMenu/ProfileMenu";
 import NavLinks from "./NavLinks/NavLinks";
+import { Heart } from "lucide-react";
+// Styles
+import classes from "./MainNavbar.module.css";
+
 const MainNavbar = async () => {
   //TODO: Extract to layout.tsx and pass as props to each page.tsx? As we can only use cookies() api in server components and not in utils
   const isAuthenticated = !!(await cookies()).get("accessToken");
@@ -25,7 +28,9 @@ const MainNavbar = async () => {
   ) : (
     <div className={classes["authenticate"]}>
       <div className={classes["authenticate__my-list"]}>
-        <Link href="/favourite-images">❤️</Link>
+        <Link href="/favourite-images">
+          <Heart fill="red" stroke="none" height={32} width={32} />
+        </Link>
       </div>
       <div className={classes["authenticate__profile-menu"]}>
         <ProfileMenu />
