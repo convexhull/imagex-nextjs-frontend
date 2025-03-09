@@ -12,6 +12,8 @@ export function useLogin() {
     onSuccess: (data) => {
       if (setSession) setSession(data);
       router.push("/");
+      // ! Call router.refresh() after .push('/'). Makes sure to rerender '/' server component
+      router.refresh();
     },
     onError: (e) => {
       console.log(e);

@@ -29,6 +29,7 @@ export const login = async ({
       headers: {
         "Content-Type": "application/json",
       },
+      //TODO: JUST READ ABOUT CACHE HERE
       cache: "no-store",
       body: JSON.stringify({ email, password }),
       credentials: "include",
