@@ -14,7 +14,9 @@ type ImageModalProps = {
 };
 
 const ImageModal = ({ image }: ImageModalProps) => {
-  const capitalizedImageDesc = capitalize(image.description || "");
+  const capitalizedImageDesc = capitalize(
+    image.description || image.alt_description || ""
+  );
 
   return (
     <Modal>
