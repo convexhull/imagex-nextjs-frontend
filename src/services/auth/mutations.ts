@@ -45,6 +45,7 @@ export function useLogout() {
   return useMutation({
     mutationFn: logout,
     onSettled: () => {
+      router.push("/");
       router.refresh();
     },
   });
