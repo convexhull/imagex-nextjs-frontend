@@ -1,0 +1,41 @@
+.Alert {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  padding: 1.5rem 1rem;
+  color: white;
+  z-index: 100;
+}
+
+.Alert--success {
+  background-color: #23c552;
+}
+
+.Alert--error {
+  background-color: rgb(255, 83, 64);
+}
+
+.Alert--warning {
+  background-color: #e67e22;
+}
+
+.Alert--visible {
+  top: 100px;
+  right: 10px;
+}
+
+.Alert__close-btn {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.Alert__close-btn:hover {
+  color: var(--font-grey);
+}
+
+.Alert__title {
+  margin-left: auto;
+}

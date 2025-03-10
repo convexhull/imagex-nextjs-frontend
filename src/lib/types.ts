@@ -29,3 +29,9 @@ export type FavouriteImage = z.infer<typeof favouriteImageSchema>;
 
 export type SignupFormData = z.infer<typeof signupFormSchema>;
 export type LoginFormData = z.infer<typeof loginFormSchema>;
+
+export enum AlertType {
+  SUCCESS = "success",
+  ERROR = "error",
+  WARNING = "warning",
+}

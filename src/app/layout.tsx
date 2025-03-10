@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
+// Components
+import Alert from "@/components/UI/Alert/Alert";
 // Providers
 import AuthProvider from "@/context/AuthContext";
 import QueryProvider from "./providers/QueryProvider";
+import AlertProvider from "./providers/AlertProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +32,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <QueryProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <AlertProvider>
+              <Alert />
+              {children}
+            </AlertProvider>
+          </AuthProvider>
         </QueryProvider>
       </body>
     </html>
