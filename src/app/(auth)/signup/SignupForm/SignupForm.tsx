@@ -25,6 +25,7 @@ const SignupForm = () => {
   const submitHandler = (data: SignupFormData) => {
     signupUserMutation.mutate(data);
   };
+
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
       <div className={classes["name-container"]}>

@@ -3,10 +3,13 @@ import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { AuthContext } from "@/context/AuthContext";
 import { login, logout, signup } from "./api";
+import { useAlert } from "@/app/providers/AlertProvider";
+import { AlertType } from "@/lib/types";
 
 export function useLogin() {
   const router = useRouter();
   const setSession = useContext(AuthContext)?.setSession;
+
   return useMutation({
     mutationFn: login,
     onSuccess: (data) => {
@@ -23,10 +26,16 @@ export function useLogin() {
 
 export function useSignupUser() {
   const router = useRouter();
+  const { showMessage } = useAlert();
+
   return useMutation({
     mutationFn: signup,
     onSuccess: () => {
       router.push("/login");
+      showMessage(
+        "Account was created successfully. Please login to continue.",
+        AlertType.SUCCESS
+      );
     },
   });
 }

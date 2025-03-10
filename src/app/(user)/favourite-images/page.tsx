@@ -6,8 +6,8 @@ import { getFavouriteImages } from "@/services/user/api.server";
 import classes from "./page.module.css";
 
 const UserProfile = async () => {
-  //TODO: Promise.all?
   const favouriteImages = await getFavouriteImages();
+
   return (
     <div className={classes.favouriteImages}>
       <h2 className={classes.favouriteImages__title}>

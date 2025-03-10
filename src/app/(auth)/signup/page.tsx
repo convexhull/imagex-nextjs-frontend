@@ -4,8 +4,6 @@ import Link from "next/link";
 import SignupForm from "./SignupForm/SignupForm";
 // Styles
 import classes from "./page.module.css";
-// import Notification from "../../../components/UI/Notification/Notification";
-// import ErrorMessageGenerator from "../../../utils/errorMessage";
 
 const Signup = () => {
   return (
@@ -28,13 +26,6 @@ const Signup = () => {
           </p>
         </div>
       </div>
-      {/* {this.props.error ? (
-        <Notification
-          theme="error"
-          title={ErrorMessageGenerator(this.props.error)}
-          clicked={this.props.onClearError}
-        />
-      ) : null} */}
     </div>
   );
 };
