@@ -33,7 +33,9 @@ const ImageModal = ({ image }: ImageModalProps) => {
               <p>@{image.user.username}</p>
             </div>
             <div className={classes["actions"]}>
-              <AddFavourite image={image} />
+              <div>
+                <AddFavourite image={image} />
+              </div>
               <div className={classes["download-button"]}>
                 <a
                   title="Download photo"

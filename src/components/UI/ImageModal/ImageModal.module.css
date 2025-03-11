@@ -82,6 +82,7 @@
 .actions {
   display: flex;
   margin-left: auto;
+  height: 40px;
 }
 
 .download-button a:visited,
@@ -93,15 +94,22 @@
 }
 
 .download-button {
-  border: 1px solid #adacac;
-  height: 40px;
+  border: 1px solid var(--color-gray-700);
   width: 100px;
   margin-left: 10px;
   border-radius: 8px;
 }
 
+.download-button svg {
+  stroke: var(--color-gray-700);
+}
+
 .download-button:hover {
-  background-color: rgb(100, 100, 100);
+  border-color: #000;
+}
+
+.download-button:hover svg {
+  stroke: #000;
 }
 
 .download-button a {
@@ -110,10 +118,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.download-button:hover a {
-  color: white;
 }
 
 .image-footer {

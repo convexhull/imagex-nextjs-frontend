@@ -17,14 +17,11 @@ const AddFavourite = ({ image }: AddFavouriteProps) => {
   };
 
   return (
-    <div className={classes.container}>
-      <button
-        className={classes.container__button}
-        onClick={addFavouriteHandler}
-      >
-        <Heart />
-      </button>
-    </div>
+    // <div className={classes.container}>
+    <button className={classes.container__button} onClick={addFavouriteHandler}>
+      <Heart stroke="none" />
+    </button>
+    // </div>
   );
 };
 
