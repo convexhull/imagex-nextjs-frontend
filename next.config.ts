@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
     //TODO: turn false once dev done
     ignoreDuringBuilds: true,
   },
+  compiler: {
+    // TODO: Once dev done, uncomment
+    // removeConsole: process.env.NODE_ENV === "production",
+  },
   /* config options here */
 };
 
