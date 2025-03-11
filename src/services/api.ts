@@ -20,7 +20,8 @@ export const getUnsplashImages = async (pageParam = 1, keyword: string) => {
     }
   );
   if (!response.ok) {
-    throw new Error("HTTP Error");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   } else {
     const data = (await response.json()).data;
     const parsedData = unsplashImagesResponseSchema.safeParse(data);
@@ -40,7 +41,8 @@ export const getPixabayImages = async (pageParam = 1, keyword: string) => {
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pixabay/searchPhotos?keywords=${keyword}&page=${pageParam}`
   );
   if (!response.ok) {
-    throw new Error("HTTP Error");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   } else {
     const data = (await response.json()).data;
     const parsedData = pixabayImagesResponseSchema.safeParse(data);
@@ -60,8 +62,8 @@ export const getCVSimilarImages = async (pageParam = 1, upload_id: string) => {
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/computer-vision/getSimilarImages?upload_id=${upload_id}&page=${pageParam}`
   );
   if (!response.ok) {
-    console.log(response.statusText);
-    throw new Error("HTTP Error");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   } else {
     const data = (await response.json()).data;
     const parsedData = computerVisionImagesResponseSchema.safeParse(data);
@@ -83,7 +85,8 @@ export const getUnsplashImage = async (imageId: string) => {
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/unsplash/photo?id=${imageId}`
   );
   if (!response.ok) {
-    throw new Error("HTTP Error");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   } else {
     const data = (await response.json()).data;
     const parsedData = unsplashImageSchema.safeParse(data);
@@ -100,7 +103,8 @@ export const getPixabayImage = async (imageId: string) => {
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/pixabay/photo?id=${imageId}`
   );
   if (!response.ok) {
-    throw new Error("HTTP Error");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   } else {
     const data = (await response.json()).data;
     const parsedData = pixabayImageSchema.safeParse(data);
@@ -123,7 +127,8 @@ export const uploadCVImage = async (file: File) => {
     }
   );
   if (!response.ok) {
-    throw new Error("HTTP Error");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   } else {
     const { upload_id } = await response.json();
     return upload_id as string;
@@ -154,7 +159,8 @@ export const addFavouriteImage = async (image: Image) => {
     }
   );
   if (!response.ok) {
-    throw new Error("HTTP Error!");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   }
   return await response.json();
 };
@@ -168,7 +174,8 @@ export const removeFavouriteImage = async (id: string) => {
     }
   );
   if (!response.ok) {
-    throw new Error("HTTP Error!");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   }
   return (await response.json()).data;
 };

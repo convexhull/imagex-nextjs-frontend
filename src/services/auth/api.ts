@@ -1,8 +1,8 @@
 import { SignupFormData } from "@/lib/types";
+import { errorMessageGenerator } from "@/utils/utils";
 
-// todo: error handling
 export const logout = async () => {
-  const res = await fetch(
+  const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/logout`,
     {
       cache: "no-store",
@@ -10,9 +10,11 @@ export const logout = async () => {
       credentials: "include",
     }
   );
-  if (!res.ok) {
-  } else {
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   }
+  return "Logout successfull";
 };
 
 export const login = async ({
@@ -36,14 +38,15 @@ export const login = async ({
     }
   );
   if (!response.ok) {
-    throw new Error(`Error: ${response.status}`);
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   }
   const user = await response.json();
   return user;
 };
 
 export const refreshAccessToken = async () => {
-  const res = await fetch(
+  const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/users/refresh`,
     {
       cache: "no-store",
@@ -51,10 +54,11 @@ export const refreshAccessToken = async () => {
       credentials: "include",
     }
   );
-  if (!res.ok) {
-    throw new Error(`Error: ${res.status}`);
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorMessageGenerator(errorData.message));
   } else {
-    return (await res.json()).data;
+    return (await response.json()).data;
   }
 };
 
@@ -70,7 +74,8 @@ export const signup = async (data: SignupFormData) => {
     }
   );
   if (!response.ok) {
-    throw new Error("HTTP Error!");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   }
   const { createdUser } = (await response.json()).data;
   return createdUser;

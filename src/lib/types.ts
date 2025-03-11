@@ -35,3 +35,9 @@ export enum AlertType {
   ERROR = "error",
   WARNING = "warning",
 }
+
+export enum ErrorMessageCode {
+  USER_ALREADY_EXISTS = "USER_ALREADY_EXISTS",
+  WRONG_CREDENTIALS = "WRONG_CREDENTIALS",
+  EMAIL_DOESNOT_EXIST = "EMAIL_DOESNOT_EXIST",
+}

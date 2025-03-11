@@ -35,7 +35,7 @@ export const getFavouriteImages = async () => {
     }
   );
   if (!response.ok) {
-    throw new Error("HTTP Error");
+    throw new Error(`Response status: ${response.status}`);
   }
   const data = await response.json();
   const parsedData = favouriteImagesResponseSchema.safeParse(data);

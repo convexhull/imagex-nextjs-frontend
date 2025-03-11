@@ -9,7 +9,8 @@ export const getOwnUserInfo = async () => {
     }
   );
   if (!response.ok) {
-    throw new Error("HTTP Error");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   }
   const data = (await response.json()).data;
   const parsedData = userProfileInfoSchema.safeParse(data);
@@ -32,7 +33,8 @@ export const uploadProfilePicture = async (file: File) => {
     }
   );
   if (!response.ok) {
-    throw new Error("HTTP Error!");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   }
   return await response.json();
 };
@@ -50,7 +52,8 @@ export const updateProfileInfo = async (data: UserProfileUpdateInfo) => {
     }
   );
   if (!response.ok) {
-    throw new Error("HTTP Error!");
+    const errorData = await response.json();
+    throw new Error(errorData.message);
   }
   return await response.json();
 };

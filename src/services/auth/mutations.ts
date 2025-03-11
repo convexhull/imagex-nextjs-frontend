@@ -5,9 +5,11 @@ import { AuthContext } from "@/context/AuthContext";
 import { login, logout, signup } from "./api";
 import { useAlert } from "@/app/providers/AlertProvider";
 import { AlertType } from "@/lib/types";
+import { errorMessageGenerator } from "@/utils/utils";
 
 export function useLogin() {
   const router = useRouter();
+  const { showMessage } = useAlert();
   const setSession = useContext(AuthContext)?.setSession;
 
   return useMutation({
@@ -20,6 +22,7 @@ export function useLogin() {
     },
     onError: (e) => {
       console.log(e);
+      showMessage(errorMessageGenerator(e.message), AlertType.ERROR);
     },
   });
 }
@@ -37,16 +40,26 @@ export function useSignupUser() {
         AlertType.SUCCESS
       );
     },
+    onError: (e) => {
+      console.log(e);
+      showMessage(errorMessageGenerator(e.message), AlertType.ERROR);
+    },
   });
 }
 
 export function useLogout() {
   const router = useRouter();
+  const { showMessage } = useAlert();
+
   return useMutation({
     mutationFn: logout,
-    onSettled: () => {
+    onSuccess: () => {
       router.push("/");
       router.refresh();
+    },
+    onError: (e) => {
+      console.log(e);
+      showMessage(errorMessageGenerator(e.message), AlertType.ERROR);
     },
   });
 }

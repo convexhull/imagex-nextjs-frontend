@@ -1,5 +1,6 @@
 import {
   ComputerVisionImage,
+  ErrorMessageCode,
   FavouriteImage,
   Image,
   PixabayImage,
@@ -173,4 +174,23 @@ export const getActivePlatform = (pathname: string) => {
     default:
       return Platform.UNSPLASH;
   }
+};
+
+export const errorMessageGenerator = (errorMsgCode: string) => {
+  let message = "";
+
+  switch (errorMsgCode) {
+    case ErrorMessageCode.USER_ALREADY_EXISTS:
+      message = "This Email has already been taken. Please try logging in.";
+      break;
+    case ErrorMessageCode.WRONG_CREDENTIALS:
+      message = "Invalid Email or password";
+      break;
+    case ErrorMessageCode.EMAIL_DOESNOT_EXIST:
+      message = "Invalid Email or password";
+      break;
+    default:
+      message = "Some error occurred";
+  }
+  return message;
 };
