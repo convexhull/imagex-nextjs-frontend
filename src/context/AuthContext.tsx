@@ -1,6 +1,6 @@
 "use client";
 // Libs
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 // Constants
 import { ACCESS_TOKEN_VALIDITY_DURATION } from "@/lib/constants";
 import { refreshAccessToken } from "@/services/auth/api";
@@ -46,6 +46,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       {children}
     </AuthContext.Provider>
   );
+};
+
+export const useAuth = () => {
+  const auth = useContext(AuthContext);
+  return {
+    session: auth?.session,
+    setSesssion: auth?.setSession,
+  };
 };
 
 export default AuthProvider;

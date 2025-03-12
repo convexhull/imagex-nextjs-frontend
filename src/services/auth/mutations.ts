@@ -1,7 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
-import { AuthContext } from "@/context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
 import { login, logout, signup } from "./api";
 import { useAlert } from "@/app/providers/AlertProvider";
 import { AlertType } from "@/lib/types";
@@ -10,12 +9,12 @@ import { errorMessageGenerator } from "@/utils/utils";
 export function useLogin() {
   const router = useRouter();
   const { showMessage } = useAlert();
-  const setSession = useContext(AuthContext)?.setSession;
+  const { setSesssion } = useAuth();
 
   return useMutation({
     mutationFn: login,
     onSuccess: (data) => {
-      if (setSession) setSession(data);
+      if (setSesssion) setSesssion(data);
       router.push("/");
       // ! Call router.refresh() after .push('/'). Makes sure to rerender '/' server component
       router.refresh();
