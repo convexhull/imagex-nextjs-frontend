@@ -23,6 +23,7 @@ const LoginForm = () => {
     resolver: zodResolver(loginFormSchema),
   });
   const loginMutation = useLogin();
+  const { isPending } = loginMutation;
 
   const submitHandler = (data: LoginFormData) => {
     loginMutation.mutate({ email: data.email, password: data.password });
@@ -52,8 +53,8 @@ const LoginForm = () => {
           />
         </div>
         <div className={classes["container__loginbtn"]}>
-          <Button type="submit" theme="imagex-default" disabled={false}>
-            Login
+          <Button type="submit" theme="imagex-default" disabled={isPending}>
+            {isPending ? "..." : "Login"}
           </Button>
         </div>
       </form>

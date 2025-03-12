@@ -22,6 +22,8 @@ const SignupForm = () => {
   } = useForm<SignupFormData>({
     resolver: zodResolver(signupFormSchema),
   });
+
+  const { isPending } = signupUserMutation;
   const submitHandler = (data: SignupFormData) => {
     signupUserMutation.mutate(data);
   };
@@ -74,8 +76,8 @@ const SignupForm = () => {
         />
       </div>
       <div>
-        <Button disabled={false} theme="imagex-default" type="submit">
-          {false ? "..." : "Join"}{" "}
+        <Button disabled={isPending} theme="imagex-default" type="submit">
+          {isPending ? "..." : "Join"}
         </Button>
       </div>
     </form>
