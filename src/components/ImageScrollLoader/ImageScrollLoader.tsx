@@ -19,7 +19,7 @@ type ImageScrollLoaderProps = {
 const ImageScrollLoader = ({ keyword, platform }: ImageScrollLoaderProps) => {
   const imagesQuery = useFetchImages(platform, keyword);
   const { ref } = useInView({
-    threshold: 0.1,
+    threshold: 0,
     onChange: (inView) => {
       if (inView) {
         imagesQuery.fetchNextPage();
