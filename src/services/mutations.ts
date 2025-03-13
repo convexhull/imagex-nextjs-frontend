@@ -36,12 +36,17 @@ export function useAddFavouriteImage() {
 
 export function useRemoveFavouriteImage() {
   const { showMessage } = useAlert();
+  const router = useRouter();
 
   return useMutation({
     mutationFn: removeFavouriteImage,
     onError: (e) => {
       console.log(e);
       showMessage(errorMessageGenerator(e.message), AlertType.ERROR);
+    },
+    onSettled: () => {
+      //TODO: Make this route /user/favourite-images?
+      router.push("/favourite-images");
     },
   });
 }

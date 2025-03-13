@@ -160,6 +160,8 @@ export const transformFavouriteImageData = (image: FavouriteImage): Image => {
       name: image.platform,
       imageId: image.imageId,
     },
+    //TODO: In next iteration, this should be delegated to backend
+    isFavourite: true,
   };
 };
 

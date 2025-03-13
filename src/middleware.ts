@@ -9,5 +9,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/favourite-images", "/profile(.*)"],
+  matcher: ["/favourite-images/(.*)", "/profile(.*)"],
 };

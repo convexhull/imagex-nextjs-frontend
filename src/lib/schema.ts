@@ -128,6 +128,8 @@ export const imageSchema = z.object({
     name: z.string(),
     imageId: z.string(),
   }),
+  //TODO: Next iter delegate to BE
+  isFavourite: z.boolean().optional(),
 });
 
 // Check for redundancy of id and platform.id
