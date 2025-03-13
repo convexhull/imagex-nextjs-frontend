@@ -1,7 +1,7 @@
 // Components
 import Modal from "../Modal/Modal";
 import { Download } from "lucide-react";
-import AddFavourite from "@/components/AddFavourite/AddFavourite";
+import ToggleFavourite from "@/components/ToggleFavourite/ToggleFavourite";
 // Utils
 import { capitalize } from "@/utils/utils";
 // Types
@@ -23,18 +23,20 @@ const ImageModal = ({ image }: ImageModalProps) => {
       {image.urls.regular && (
         <div className={classes.container}>
           <div className={classes.imageDetails}>
-            <div className={classes["user-info"]}>
-              <div>
-                <img src={image.user.profile_image} alt="uploader's" />
+            {image.user.profile_image && (
+              <div className={classes["user-info"]}>
+                <div>
+                  <img src={image.user.profile_image} alt="uploader's" />
+                </div>
+                <p>
+                  <strong>{image.user.name}</strong>
+                </p>
+                <p>@{image.user.username}</p>
               </div>
-              <p>
-                <strong>{image.user.name}</strong>
-              </p>
-              <p>@{image.user.username}</p>
-            </div>
+            )}
             <div className={classes["actions"]}>
               <div>
-                <AddFavourite image={image} />
+                <ToggleFavourite image={image} />
               </div>
               <div className={classes["download-button"]}>
                 <a

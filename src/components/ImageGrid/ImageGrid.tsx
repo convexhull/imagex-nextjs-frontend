@@ -23,13 +23,18 @@ const ImageGrid = ({ images }: ImageGridProps) => {
         <a target="_blank" href={image.links.download}>
           <div className={classes["image__overlay"]}></div>
         </a>
-      ) : (
+      ) : !image.isFavourite ? (
         <Link
           href={`/view-image/${image.platform.name}/${image.platform.imageId}`}
         >
           <div className={classes["image__overlay"]}></div>
         </Link>
+      ) : (
+        <Link href={`/favourite-images/${image.id}`}>
+          <div className={classes["image__overlay"]}></div>
+        </Link>
       );
+
     return (
       <Fragment key={image.id}>
         <div
