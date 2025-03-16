@@ -49,12 +49,14 @@ export function useSignupUser() {
 export function useLogout() {
   const router = useRouter();
   const { showMessage } = useAlert();
+  const { setSesssion } = useAuth();
 
   return useMutation({
     mutationFn: logout,
     onSuccess: () => {
       router.push("/");
       router.refresh();
+      if (setSesssion) setSesssion(null);
     },
     onError: (e) => {
       console.log(e);
