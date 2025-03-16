@@ -58,7 +58,7 @@ const ToggleFavourite = ({ image }: ToggleFavouriteProps) => {
       }`}
       onClick={addFavouriteHandler}
     >
-      <Heart stroke="none" fill="#767676" />
+      {isPending ? "..." : <Heart stroke="none" fill="#767676" />}
     </button>
   );
 };
