@@ -11,7 +11,9 @@ import classes from "./MainNavbar.module.css";
 
 const MainNavbar = async () => {
   //TODO: Extract to layout.tsx and pass as props to each page.tsx? As we can only use cookies() api in server components and not in utils
-  const isAuthenticated = !!(await cookies()).get("accessToken");
+  //TODO: Using refreshToken here is a work around. Ideally should check for accessToken. But accessToken is only set when client side calls the /refresh endpoint.
+  // As such, its not available here on the first load. To reproduce, replace below by accessToken, delete accessToken from browser cookie and refresh.
+  const isAuthenticated = !!(await cookies()).get("refreshToken");
   const profileInfo = !isAuthenticated ? (
     <ul className={classes["authenticate"]}>
       <li>
