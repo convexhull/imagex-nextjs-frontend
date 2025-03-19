@@ -7,6 +7,13 @@ type InputProps = UseFormRegisterReturn & {
   fieldErrorMsg?: string;
 };
 
+// This also works. General way to get props of html elements in order to create a custom html component
+// type InputProps = React.ComponentProps<"input"> & {
+//   fieldLabel: string;
+//   type: string;
+//   fieldErrorMsg?: string;
+// };
+
 const Input = ({ fieldLabel, fieldErrorMsg, ...props }: InputProps) => {
   const cssClasses = [classes["text-input"]];
   const labelCssClasses = [classes["text-input__label"]];
