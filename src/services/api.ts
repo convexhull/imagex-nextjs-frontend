@@ -80,6 +80,25 @@ export const getCVSimilarImages = async (pageParam = 1, upload_id: string) => {
 
 //TODO: Can combine unsplash and pixabay
 
+export const getRandomUnsplashImage = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/unsplash/randomPhoto`,
+    { cache: "no-store" }
+  );
+  if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message);
+  } else {
+    const data = (await response.json()).data;
+    const parsedData = unsplashImageSchema.safeParse(data);
+    if (parsedData.error) {
+      console.log(parsedData.error.message);
+      throw new Error(parsedData.error.message);
+    }
+    return transformUnsplashImageData(parsedData.data);
+  }
+};
+
 export const getUnsplashImage = async (imageId: string) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/unsplash/photo?id=${imageId}`
