@@ -54,22 +54,33 @@ export const imageOrientationByDimensions = (width: number, height: number) => {
   return orientation;
 };
 
+export const getPixabayCdnUrl = (
+  previewURL: string,
+  size: "640" | "1280" = "640"
+) => previewURL.replace("_150.", `_${size}.`);
+
 export const transformPixabayImageData = (image: PixabayImage): Image => {
+  const description =
+    image.name ||
+    image.description ||
+    image.alt_description ||
+    image.tags ||
+    "";
+
   return {
     id: image.id,
     width: image.imageWidth,
     height: image.imageHeight,
-    description: image.description || image.alt_description || image.tags || "",
-    alt_description:
-      image.alt_description || image.description || image.tags || "",
+    description,
+    alt_description: description,
     urls: {
-      raw: image.largeImageURL,
-      full: image.largeImageURL,
-      regular: image.largeImageURL,
-      small: image.largeImageURL,
+      raw: getPixabayCdnUrl(image.previewURL, "1280"),
+      full: getPixabayCdnUrl(image.previewURL, "1280"),
+      regular: getPixabayCdnUrl(image.previewURL, "1280"),
+      small: getPixabayCdnUrl(image.previewURL, "640"),
     },
     links: {
-      download: image.largeImageURL,
+      download: image.pageURL,
     },
     user: {
       username: image.user,

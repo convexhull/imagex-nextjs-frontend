@@ -25,9 +25,13 @@ export const pixabayImageSchema = z.object({
   imageWidth: z.number(),
   imageHeight: z.number(),
   tags: z.string().optional(),
+  name: z.string().optional(),
   alt_description: z.string().optional(),
   description: z.string().optional(),
+  previewURL: z.string(),
+  webformatURL: z.string(),
   largeImageURL: z.string(),
+  pageURL: z.string(),
   user: z.string(),
   userImageURL: z.string(),
 });
