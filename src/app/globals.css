@@ -25,6 +25,8 @@ code {
   --unsplash-black: #111111;
   --screen-min: 538px;
   --color-gray-700: #767676;
+  --main-navbar-height: 4rem;
+  --category-navbar-height: 3rem;
 }
 
 h1 {

@@ -2,8 +2,12 @@
   color: var(--font-grey);
   overflow-x: hidden;
   display: flex;
-  height: 3rem;
+  height: var(--category-navbar-height);
   align-items: center;
+  position: sticky;
+  top: var(--main-navbar-height);
+  z-index: 99;
+  background-color: white;
 }
 
 .navlink-container {

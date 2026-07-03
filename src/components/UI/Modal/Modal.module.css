@@ -1,10 +1,10 @@
 .Modal {
   position: fixed;
   z-index: 10;
-  max-height: 100vh;
+  max-height: calc(100vh - var(--main-navbar-height));
   overflow: auto;
   width: 80%;
-  top: 0;
+  top: var(--main-navbar-height);
   left: calc(10%);
   background-color: #ecf0f1;
 }

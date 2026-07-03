@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: calc(100vh - var(--main-navbar-height));
   overflow-y: hidden;
   padding: 16px;
 }
@@ -12,12 +12,12 @@
   margin: 0 auto;
   text-align: center;
   flex: 1;
-  height: calc(100vh - 100px);
+  height: calc(100vh - var(--main-navbar-height) - 100px);
 }
 
 .image-container > img {
   max-width: 100%;
-  height: calc(100vh - 200px);
+  height: calc(100vh - var(--main-navbar-height) - 200px);
 }
 
 .imageDetails {
